@@ -7,13 +7,13 @@ namespace PRSWebApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class fixedtypo : IMigrationMetadata
+    public sealed partial class ifthisdoesntworkigivethefuckup : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(fixedtypo));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ifthisdoesntworkigivethefuckup));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710021840284_fixed typo"; }
+            get { return "201710022116003_if this doesn't work i give the fuck up"; }
         }
         
         string IMigrationMetadata.Source

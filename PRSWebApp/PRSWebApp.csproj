@@ -161,23 +161,12 @@
     <Compile Include="Migrations\201710021514557_Initialization.Designer.cs">
       <DependentUpon>201710021514557_Initialization.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710021806578_added user, vendor, product.cs" />
-    <Compile Include="Migrations\201710021806578_added user, vendor, product.Designer.cs">
-      <DependentUpon>201710021806578_added user, vendor, product.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710021824346_added Purchase Request.cs" />
-    <Compile Include="Migrations\201710021824346_added Purchase Request.Designer.cs">
-      <DependentUpon>201710021824346_added Purchase Request.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710021834486_added purchase request line item.cs" />
-    <Compile Include="Migrations\201710021834486_added purchase request line item.Designer.cs">
-      <DependentUpon>201710021834486_added purchase request line item.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710021840284_fixed typo.cs" />
-    <Compile Include="Migrations\201710021840284_fixed typo.Designer.cs">
-      <DependentUpon>201710021840284_fixed typo.cs</DependentUpon>
+    <Compile Include="Migrations\201710022116003_if this doesn%27t work i give the fuck up.cs" />
+    <Compile Include="Migrations\201710022116003_if this doesn%27t work i give the fuck up.Designer.cs">
+      <DependentUpon>201710022116003_if this doesn%27t work i give the fuck up.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PRSWebAppContext.cs" />
     <Compile Include="Models\PurchaseRequest.cs" />
@@ -187,6 +176,9 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\JsonNetResult.cs" />
+    <Compile Include="Utility\JsonResultMessage.cs" />
+    <Compile Include="Utility\Msg.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -271,17 +263,8 @@
     <EmbeddedResource Include="Migrations\201710021514557_Initialization.resx">
       <DependentUpon>201710021514557_Initialization.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710021806578_added user, vendor, product.resx">
-      <DependentUpon>201710021806578_added user, vendor, product.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710021824346_added Purchase Request.resx">
-      <DependentUpon>201710021824346_added Purchase Request.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710021834486_added purchase request line item.resx">
-      <DependentUpon>201710021834486_added purchase request line item.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710021840284_fixed typo.resx">
-      <DependentUpon>201710021840284_fixed typo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710022116003_if this doesn%27t work i give the fuck up.resx">
+      <DependentUpon>201710022116003_if this doesn%27t work i give the fuck up.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

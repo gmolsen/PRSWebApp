@@ -43,6 +43,6 @@ namespace PRSWebApp.Models {
 		public string Email { get; set; }
 
 		[Required]
-		public Boolean Preapproved { get; set; }
+		public Boolean IsPreapproved { get; set; }
 	}
 }

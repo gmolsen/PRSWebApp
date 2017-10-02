@@ -28,5 +28,7 @@ namespace PRSWebApp.Models
 		public System.Data.Entity.DbSet<PRSWebApp.Models.PurchaseRequest> PurchaseRequests { get; set; }
 
 		public System.Data.Entity.DbSet<PRSWebApp.Models.PurchaseRequestLineItem> PurchaseRequestLineItems { get; set; }
+
+		public System.Data.Entity.DbSet<PRSWebApp.Models.Log> Logs { get; set; }
 	}
 }

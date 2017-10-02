@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PRSWebApp.Models;
+using Utility;
 
 namespace PRSWebApp.Controllers
 {
@@ -14,8 +15,36 @@ namespace PRSWebApp.Controllers
     {
         private PRSWebAppContext db = new PRSWebAppContext();
 
-        // GET: Users
-        public ActionResult Index()
+		//performs Json call to return list of Users
+		//this will always return an array
+		//it may have 0, 1, or more items within the array
+		public ActionResult List() {
+			return Json(db.Users.ToList(), JsonRequestBehavior.AllowGet);
+		}
+
+		// Users/UserID
+		// will return a user or an error message
+		public ActionResult Get(int? id) {
+			//if nothing is passed in for ID
+			if (id == null) {
+				return Json(new Msg { Result = "Failure", Message = "ID is null" }, JsonRequestBehavior.AllowGet);
+			}
+			
+			//returns a user or an error message
+			User user = db.Users.Find(id);
+			//if id is not found when find is issued, you get this message as an array
+			if (user == null) {
+				return Json(new Msg { Result = "Failure", Message = "ID not found" }, JsonRequestBehavior.AllowGet);
+			}
+			//no errors, we have a user
+			return Json(user, JsonRequestBehavior.AllowGet);
+		}
+
+		//region tag allows you group code and hide to make code display cleaner
+		#region MVC Methods
+
+		// GET: Users
+		public ActionResult Index()
         {
             return View(db.Users.ToList());
         }
@@ -114,8 +143,9 @@ namespace PRSWebApp.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+		#endregion
 
-        protected override void Dispose(bool disposing)
+		protected override void Dispose(bool disposing)
         {
             if (disposing)
             {

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PRSWebApp.Models;
+using Utility;
 
 namespace PRSWebApp.Controllers
 {
@@ -14,8 +15,35 @@ namespace PRSWebApp.Controllers
     {
         private PRSWebAppContext db = new PRSWebAppContext();
 
-        // GET: Vendors
-        public ActionResult Index()
+		//performs Json call to return list of Vendors
+		//this will always return an array
+		//it may have 0, 1, or more items within the array
+		public ActionResult List() {
+			return Json(db.Vendors.ToList(), JsonRequestBehavior.AllowGet);
+		}
+
+		// Vendors/VendorsID
+		// will return a vendor or an error message
+		public ActionResult Get(int? id) {
+			//if nothing is passed in for ID
+			if (id == null) {
+				return Json(new Msg { Result = "Failure", Message = "ID is null" }, JsonRequestBehavior.AllowGet);
+			}
+
+			//returns a vendor or an error message
+			Vendor vendor = db.Vendors.Find(id);
+			//if id is not found when find is issued, you get this message as an array
+			if (vendor == null) {
+				return Json(new Msg { Result = "Failure", Message = "ID not found" }, JsonRequestBehavior.AllowGet);
+			}
+			//no errors, we have a vendor
+			return Json(vendor, JsonRequestBehavior.AllowGet);
+		}
+
+		#region MVC Methods
+
+		// GET: Vendors
+		public ActionResult Index()
         {
             return View(db.Vendors.ToList());
         }
@@ -115,7 +143,9 @@ namespace PRSWebApp.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+		#endregion	
+
+		protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
