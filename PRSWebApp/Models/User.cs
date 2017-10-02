@@ -11,7 +11,7 @@ namespace PRSWebApp.Models {
 
 		[Required]
 		[StringLength(30)]
-		public string Username { get; set; }
+		public string UserName { get; set; }
 
 		[Required]
 		[StringLength(16)]

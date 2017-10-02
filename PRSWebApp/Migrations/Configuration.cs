@@ -1,6 +1,7 @@
 namespace PRSWebApp.Migrations
 {
-    using System;
+	using PRSWebApp.Models;
+	using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -9,6 +10,7 @@ namespace PRSWebApp.Migrations
     {
         public Configuration()
         {
+			//migrations will be done manually
             AutomaticMigrationsEnabled = false;
         }
 
@@ -26,6 +28,20 @@ namespace PRSWebApp.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+			// will add this record if it does not exist, will update if it does
+			context.Users.AddOrUpdate(
+				u => u.UserName,
+				new User {
+					UserName = "admin",
+					Password = "admin",
+					FirstName = "system",
+					LastName = "admin",
+					Phone = "000-000-000",
+					Email = "system@admin.com",
+					IsReviewer = true,
+					IsAdmin = true
+				}
+				);
         }
     }
 }
