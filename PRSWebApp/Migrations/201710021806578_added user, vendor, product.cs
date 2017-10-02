@@ -3,10 +3,26 @@ namespace PRSWebApp.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class adduserandvendor : DbMigration
+    public partial class addeduservendorproduct : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Products",
+                c => new
+                    {
+                        ProductID = c.Int(nullable: false, identity: true),
+                        VendorPartNumber = c.String(nullable: false, maxLength: 30),
+                        Name = c.String(nullable: false, maxLength: 30),
+                        Price = c.Double(nullable: false),
+                        Unit = c.String(nullable: false, maxLength: 30),
+                        PhotoPath = c.String(nullable: false, maxLength: 130),
+                        VendorID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ProductID)
+                .ForeignKey("dbo.Vendors", t => t.VendorID, cascadeDelete: true)
+                .Index(t => t.VendorID);
+            
             CreateTable(
                 "dbo.Vendors",
                 c => new
@@ -28,7 +44,10 @@ namespace PRSWebApp.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.Products", "VendorID", "dbo.Vendors");
+            DropIndex("dbo.Products", new[] { "VendorID" });
             DropTable("dbo.Vendors");
+            DropTable("dbo.Products");
         }
     }
 }

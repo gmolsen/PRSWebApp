@@ -7,13 +7,13 @@ namespace PRSWebApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class adduserandvendor : IMigrationMetadata
+    public sealed partial class fixedtypo : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(adduserandvendor));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(fixedtypo));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710021628563_add user and vendor"; }
+            get { return "201710021840284_fixed typo"; }
         }
         
         string IMigrationMetadata.Source
