@@ -175,6 +175,22 @@
     <Compile Include="Migrations\201710031538387_added unique index to User.UserName.Designer.cs">
       <DependentUpon>201710031538387_added unique index to User.UserName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710031610326_Vendor.Code must be unique.cs" />
+    <Compile Include="Migrations\201710031610326_Vendor.Code must be unique.Designer.cs">
+      <DependentUpon>201710031610326_Vendor.Code must be unique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710031827146_added attributes to product properties as well as methods to product controller.cs" />
+    <Compile Include="Migrations\201710031827146_added attributes to product properties as well as methods to product controller.Designer.cs">
+      <DependentUpon>201710031827146_added attributes to product properties as well as methods to product controller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710031843541_made Product.Vendor virtual.cs" />
+    <Compile Include="Migrations\201710031843541_made Product.Vendor virtual.Designer.cs">
+      <DependentUpon>201710031843541_made Product.Vendor virtual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710032003204_purchase request stuff.cs" />
+    <Compile Include="Migrations\201710032003204_purchase request stuff.Designer.cs">
+      <DependentUpon>201710032003204_purchase request stuff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Product.cs" />
@@ -278,6 +294,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710031538387_added unique index to User.UserName.resx">
       <DependentUpon>201710031538387_added unique index to User.UserName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710031610326_Vendor.Code must be unique.resx">
+      <DependentUpon>201710031610326_Vendor.Code must be unique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710031827146_added attributes to product properties as well as methods to product controller.resx">
+      <DependentUpon>201710031827146_added attributes to product properties as well as methods to product controller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710031843541_made Product.Vendor virtual.resx">
+      <DependentUpon>201710031843541_made Product.Vendor virtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710032003204_purchase request stuff.resx">
+      <DependentUpon>201710032003204_purchase request stuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

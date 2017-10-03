@@ -47,6 +47,7 @@ namespace PRSWebApp.Controllers
 			}
 			// if we get here, add user
 			db.Users.Add(user);
+			//saves changes to database
 			db.SaveChanges();
 			return Json(new Msg { Result = "Success", Message = "Add successful" });
 		}
@@ -66,6 +67,7 @@ namespace PRSWebApp.Controllers
 			oldUser.Email = user.Email;
 			oldUser.IsReviewer= user.IsReviewer;
 			oldUser.IsAdmin = user.IsAdmin;
+			//saves changes to database
 			db.SaveChanges();
 			return Json(new Msg { Result = "Success", Message = "Change successful" });
 		}
@@ -80,6 +82,7 @@ namespace PRSWebApp.Controllers
 				return Json(new Msg { Result = "Failure", Message = "User ID not found" });
 			}
 			db.Users.Remove(removeUser);
+			//saves changes to database
 			db.SaveChanges();
 			return Json(new Msg { Result = "Success", Message = "Remove successful" });
 		}

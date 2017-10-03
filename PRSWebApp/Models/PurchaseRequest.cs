@@ -18,6 +18,9 @@ namespace PRSWebApp.Models {
 	[StringLength(80)]
 	public string Justification { get; set; }
 
+	[StringLength(80)]
+	public string RejectionReason { get; set; }
+
 	[Required]
 	public DateTime DateNeeded { get; set; }
 
@@ -33,10 +36,23 @@ namespace PRSWebApp.Models {
 	public double Total { get; set; }
 
 	[Required]
-	public DateTime SubmittedDate { get; set; }
+	public DateTime SubmittedDate = DateTime.Now;
 
 	[Required]
 	public int UserID { get; set; }
 	public User User { get; set; }
+	
+	public void Clone(PurchaseRequest purchaseRequest) {
+			UserID = purchaseRequest.UserID;
+			User = purchaseRequest.User;
+			Description = purchaseRequest.Description;
+			Justification = purchaseRequest.Justification;
+			DateNeeded = purchaseRequest.DateNeeded;
+			DeliveryMode = purchaseRequest.DeliveryMode;
+			Status = purchaseRequest.Status;
+			Total = purchaseRequest.Total;
+			SubmittedDate = purchaseRequest.SubmittedDate;
+		}
+
+		}
 	}
-}

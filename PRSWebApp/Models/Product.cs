@@ -23,11 +23,10 @@ namespace PRSWebApp.Models {
 		[StringLength(30)]
 		public string Unit { get; set; }
 
-		[Required]
 		[StringLength(130)]
 		public string PhotoPath { get; set; }
 
 		public int VendorID { get; set; }
-		public Vendor Vendor { get; set; }
+		public virtual Vendor Vendor { get; set; }
 	}
 }

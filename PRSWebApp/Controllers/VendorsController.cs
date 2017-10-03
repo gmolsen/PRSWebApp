@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PRSWebApp.Models;
 using Utility;
+using System.Web.Http;
 
 namespace PRSWebApp.Controllers
 {
@@ -38,6 +39,53 @@ namespace PRSWebApp.Controllers
 			}
 			//no errors, we have a vendor
 			return Json(vendor, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult Add([FromBody] Vendor vendor) {
+			if (vendor == null || vendor.Code == null) {
+				return Json(new Msg { Result = "Failure", Message = "Vendor parameter is missing or invalid" });
+			}
+			// if we get here, add vendor
+			db.Vendors.Add(vendor);
+			//saves changes to database
+			db.SaveChanges();
+			return Json(new Msg { Result = "Success", Message = "Add successful" });
+		}
+
+		public ActionResult Change([FromBody] Vendor vendor) {
+			if (vendor == null || vendor.Code == null) {
+				return Json(new Msg { Result = "Failure", Message = "Vendor parameter is missing or invalid" });
+			}
+			// if we get here, update vendor
+			// were choosing this because its consistent with other functions??
+			Vendor oldVendor = db.Vendors.Find(vendor.VendorID);
+			oldVendor.Name = vendor.Name;
+			oldVendor.Code = vendor.Code;
+			oldVendor.Address = vendor.Address;
+			oldVendor.City = vendor.City;
+			oldVendor.State = vendor.State;
+			oldVendor.Zip = vendor.Zip;
+			oldVendor.Phone = vendor.Phone;
+			oldVendor.Email = vendor.Email;
+			oldVendor.IsPreapproved = vendor.IsPreapproved;
+			//saves changes to database
+			db.SaveChanges();
+			return Json(new Msg { Result = "Success", Message = "Change successful" });
+		}
+
+		public ActionResult Remove([FromBody] Vendor vendor) {
+			if (vendor == null || vendor.VendorID <= 0) {
+				return Json(new Msg { Result = "Failure", Message = "Vendor parameter is missing or invalid" });
+			}
+			//if we get here, delete the vendor
+			Vendor removeVendor = db.Vendors.Find(vendor.VendorID);
+			if (removeVendor == null) {
+				return Json(new Msg { Result = "Failure", Message = "Vendor ID not found" });
+			}
+			db.Vendors.Remove(removeVendor);
+			//saves changes to database
+			db.SaveChanges();
+			return Json(new Msg { Result = "Success", Message = "Remove successful" });
 		}
 
 		#region MVC Methods
@@ -72,7 +120,7 @@ namespace PRSWebApp.Controllers
         // POST: Vendors/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "VendorID,Code,Name,Address,City,State,Zip,Phone,Email,Preapproved")] Vendor vendor)
         {
@@ -104,7 +152,7 @@ namespace PRSWebApp.Controllers
         // POST: Vendors/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "VendorID,Code,Name,Address,City,State,Zip,Phone,Email,Preapproved")] Vendor vendor)
         {
@@ -133,7 +181,7 @@ namespace PRSWebApp.Controllers
         }
 
         // POST: Vendors/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [System.Web.Mvc.HttpPost, System.Web.Mvc.ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
