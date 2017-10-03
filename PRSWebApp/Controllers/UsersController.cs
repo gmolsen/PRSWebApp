@@ -51,6 +51,39 @@ namespace PRSWebApp.Controllers
 			return Json(new Msg { Result = "Success", Message = "Add successful" });
 		}
 
+		public ActionResult Change([FromBody] User user) {
+			if (user == null || user.UserName == null) {
+				return Json(new Msg { Result = "Failure", Message = "User parameter is missing or invalid" });
+			}
+			// if we get here, update user
+			// were choosing this because its consistent with other functions??
+			User oldUser = db.Users.Find(user.UserID);
+			oldUser.UserName = user.UserName;
+			oldUser.Password = user.Password;
+			oldUser.FirstName = user.FirstName;
+			oldUser.LastName = user.LastName;
+			oldUser.Phone = user.Phone;
+			oldUser.Email = user.Email;
+			oldUser.IsReviewer= user.IsReviewer;
+			oldUser.IsAdmin = user.IsAdmin;
+			db.SaveChanges();
+			return Json(new Msg { Result = "Success", Message = "Change successful" });
+		}
+
+		public ActionResult Remove([FromBody] User user) {
+			if (user == null || user.UserID <= 0) {
+				return Json(new Msg { Result = "Failure", Message = "User parameter is missing or invalid" });
+			}
+			//if we get here, delete the user
+			User removeUser = db.Users.Find(user.UserID);
+			if (removeUser == null) {
+				return Json(new Msg { Result = "Failure", Message = "User ID not found" });
+			}
+			db.Users.Remove(removeUser);
+			db.SaveChanges();
+			return Json(new Msg { Result = "Success", Message = "Remove successful" });
+		}
+
 		//region tag allows you group code and hide to make code display cleaner
 		#region MVC Methods
 

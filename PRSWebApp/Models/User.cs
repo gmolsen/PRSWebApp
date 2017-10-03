@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,6 +12,8 @@ namespace PRSWebApp.Models {
 
 		[Required]
 		[StringLength(30)]
+		//requires username to be unique
+		[Index(IsUnique = true)]
 		public string UserName { get; set; }
 
 		[Required]
