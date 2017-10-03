@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PRSWebApp.Models;
 using Utility;
+using System.Web.Http;
 
 namespace PRSWebApp.Controllers
 {
@@ -38,6 +39,16 @@ namespace PRSWebApp.Controllers
 			}
 			//no errors, we have a user
 			return Json(user, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult Add([FromBody] User user) {
+			if (user == null || user.UserName == null) {
+				return Json(new Msg { Result = "Failure", Message = "User parameter is missing or invalid" });
+			}
+			// if we get here, add user
+			db.Users.Add(user);
+			db.SaveChanges();
+			return Json(new Msg { Result = "Success", Message = "Add successful" });
 		}
 
 		//region tag allows you group code and hide to make code display cleaner
@@ -73,7 +84,7 @@ namespace PRSWebApp.Controllers
         // POST: Users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UserID,Username,Password,FirstName,LastName,Phone,Email,IsReviewer,IsAdmin")] User user)
         {
@@ -105,7 +116,7 @@ namespace PRSWebApp.Controllers
         // POST: Users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "UserID,Username,Password,FirstName,LastName,Phone,Email,IsReviewer,IsAdmin")] User user)
         {
@@ -134,7 +145,7 @@ namespace PRSWebApp.Controllers
         }
 
         // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [System.Web.Mvc.HttpPost, System.Web.Mvc.ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
