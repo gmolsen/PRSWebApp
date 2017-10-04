@@ -58,11 +58,14 @@ namespace PRSWebApp.Controllers
 			if (vendor == null) {
 				return Json(new Msg { Result = "Failure", Message = "Invalid Vendor ID" });
 			}
+			Product products = db.Products.Find(product.ProductID);
+			if (products == null) {
+				return Json(new Msg { Result = "Failure", Message = "Invalid Product ID" });
+			}
 			// if we get here, update product
 			// were choosing this because its consistent with other functions??
 			Product oldProduct = db.Products.Find(product.ProductID);
 			oldProduct.VendorID = product.VendorID;
-			oldProduct.Vendor = product.Vendor;
 			oldProduct.VendorPartNumber = product.VendorPartNumber;
 			oldProduct.Name = product.Name;
 			oldProduct.Price = product.Price;

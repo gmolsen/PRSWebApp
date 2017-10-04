@@ -191,6 +191,10 @@
     <Compile Include="Migrations\201710032120015_made PurchaseRequest.User a virtual property.Designer.cs">
       <DependentUpon>201710032120015_made PurchaseRequest.User a virtual property.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710041542249_did some stuff.cs" />
+    <Compile Include="Migrations\201710041542249_did some stuff.Designer.cs">
+      <DependentUpon>201710041542249_did some stuff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Product.cs" />
@@ -306,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710032120015_made PurchaseRequest.User a virtual property.resx">
       <DependentUpon>201710032120015_made PurchaseRequest.User a virtual property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710041542249_did some stuff.resx">
+      <DependentUpon>201710041542249_did some stuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

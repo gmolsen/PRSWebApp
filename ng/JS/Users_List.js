@@ -1,7 +1,8 @@
 $().ready (function() {
 
-$("#call").click(function() {
 
+
+$("#call").click(function() {
 
 		/* ajax call is made to "List()" inside UsersController 
 		which then returns an array containing all properties for

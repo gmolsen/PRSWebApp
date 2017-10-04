@@ -12,10 +12,21 @@ using System.Web.Http;
 
 namespace PRSWebApp.Controllers
 {
-    public class PurchaseRequestLineItemsController : Controller
+	public class PurchaseRequestLineItemsController : Controller {
+		private PRSWebAppContext db = new PRSWebAppContext();
 
-    {
-        private PRSWebAppContext db = new PRSWebAppContext();
+		//Purchase request total is updated 
+		private void UpdatePurchaseRequestTotal(int prid) {
+			double total = 0.0;
+			var purchaseRequestLineItems = db.PurchaseRequestLineItems.Where(p => p.PurchaseRequestID == prid);
+			foreach (var purchaseRequestLineItem in purchaseRequestLineItems) { 
+			var subTotal = purchaseRequestLineItem.Quantity * purchaseRequestLineItem.Product.Price;
+				total += subTotal;
+		}
+			var purchaseRequest = db.PurchaseRequests.Find(prid);
+			purchaseRequest.Total = total;
+			db.SaveChanges();
+	}
 
 		//performs Json call to return list of PurchaseRequestLineItems
 		//this will always return an array
@@ -57,6 +68,8 @@ namespace PRSWebApp.Controllers
 			db.PurchaseRequestLineItems.Add(PurchaseRequestLineItem);
 			//saves changes to database
 			db.SaveChanges();
+			// method to calculate new total is called 
+			UpdatePurchaseRequestTotal(PurchaseRequestLineItem.PurchaseRequestID);
 			return Json(new Msg { Result = "Success", Message = "Add successful" });
 		}
 
@@ -67,7 +80,7 @@ namespace PRSWebApp.Controllers
 			}
 
 			//more validation
-			var purchaseRequest = db.Users.Find(PurchaseRequestLineItem.PurchaseRequestID);
+			var purchaseRequest = db.PurchaseRequests.Find(PurchaseRequestLineItem.PurchaseRequestID);
 			if (purchaseRequest == null) {
 				return Json(new Msg { Result = "Failure", Message = "Purchase Request ID FK is invalid" });
 			}
@@ -82,6 +95,7 @@ namespace PRSWebApp.Controllers
 			oldPurchaseRequestLineItem.Clone(PurchaseRequestLineItem);
 			//saves changes to database
 			db.SaveChanges();
+			UpdatePurchaseRequestTotal(PurchaseRequestLineItem.PurchaseRequestID);
 			return Json(new Msg { Result = "Success", Message = "Change successful" });
 		}
 
@@ -97,6 +111,7 @@ namespace PRSWebApp.Controllers
 			db.PurchaseRequestLineItems.Remove(removePurchaseRequestLineItem);
 			//saves changes to database
 			db.SaveChanges();
+			UpdatePurchaseRequestTotal(removePurchaseRequestLineItem.PurchaseRequestID);
 			return Json(new Msg { Result = "Success", Message = "Remove successful" });
 		}
 

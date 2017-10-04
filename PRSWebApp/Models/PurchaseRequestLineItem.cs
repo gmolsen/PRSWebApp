@@ -23,12 +23,13 @@ namespace PRSWebApp.Models {
 		//need virtual to include Product in PurchaseRequestLineItem
 		public virtual Product Product { get; set; }
 
+		// easier to find rather than digging through controller
 		public void Clone(PurchaseRequestLineItem purchaseRequestLineItem) {
 			ProductID = purchaseRequestLineItem.ProductID;
-			Product = purchaseRequestLineItem.Product;
+			//Product = purchaseRequestLineItem.Product;
 			Quantity = purchaseRequestLineItem.Quantity;
 			PurchaseRequestID = purchaseRequestLineItem.PurchaseRequestID;
-			PurchaseRequest = purchaseRequestLineItem.PurchaseRequest;
+			//PurchaseRequest = purchaseRequestLineItem.PurchaseRequest;
 		}
 
 	}
