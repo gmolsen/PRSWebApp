@@ -40,7 +40,8 @@ namespace PRSWebApp.Models {
 
 	[Required]
 	public int UserID { get; set; }
-	public User User { get; set; }
+	//virtual tells EF to fill in User when you access it
+	public virtual User User { get; set; }
 	
 	public void Clone(PurchaseRequest purchaseRequest) {
 			UserID = purchaseRequest.UserID;

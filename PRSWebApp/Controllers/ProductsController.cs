@@ -78,7 +78,7 @@ namespace PRSWebApp.Controllers
 				return Json(new Msg { Result = "Failure", Message = "Product parameter is missing or invalid" });
 			}
 			//if we get here, delete the product
-			Product removeProduct = db.Products.Find(product.VendorID);
+			Product removeProduct = db.Products.Find(product.ProductID);
 			if (removeProduct == null) {
 				return Json(new Msg { Result = "Failure", Message = "Product ID not found" });
 			}

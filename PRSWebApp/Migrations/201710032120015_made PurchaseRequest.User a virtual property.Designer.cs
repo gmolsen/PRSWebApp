@@ -7,13 +7,13 @@ namespace PRSWebApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class madeProductVendorvirtual : IMigrationMetadata
+    public sealed partial class madePurchaseRequestUseravirtualproperty : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(madeProductVendorvirtual));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(madePurchaseRequestUseravirtualproperty));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710031843541_made Product.Vendor virtual"; }
+            get { return "201710032120015_made PurchaseRequest.User a virtual property"; }
         }
         
         string IMigrationMetadata.Source

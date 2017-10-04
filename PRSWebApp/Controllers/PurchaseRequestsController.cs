@@ -59,30 +59,36 @@ namespace PRSWebApp.Controllers
 		}
 
 		public ActionResult Change([FromBody] PurchaseRequest purchaseRequest) {
-			User users = db.Users.Find(purchaseRequest.UserID);
-			//need more checks
-			if (users == null) {
-				return Json(new Msg { Result = "Failure", Message = "Invalid User ID" });
+			//validation (add more to other controllers)
+			if (purchaseRequest == null) {
+				return Json(new Msg { Result = "Failure", Message = "Purchase Request is null" });
 			}
-			// if we get here, update purchaseRequest
-			// calls clone method
-			User oldPurchaseRequest = db.PurchaseRequests.Find(purchaseRequest.PurchaseRequestID);
-			//need more checks
+
+			//more validation
+			var user = db.Users.Find(purchaseRequest.UserID);
+			if (user == null) {
+				return Json(new Msg { Result = "Failure", Message = "User ID FK is invalid" });
+			}
+			//even more validation (doesn't it feel great to be validated?) 
+			var oldPurchaseRequest = db.PurchaseRequests.Find(purchaseRequest.PurchaseRequestID);
 			if (oldPurchaseRequest == null) {
 				return Json(new Msg { Result = "Failure", Message = "Purchase Request ID not found" });
 			}
-				oldPurchaseRequest.Clone(purchaseRequest);
+
+			// if we get here, update the Purchase Request
+			// calls clone method from Purchase Request class
+			oldPurchaseRequest.Clone(purchaseRequest);
 			//saves changes to database
 			db.SaveChanges();
 			return Json(new Msg { Result = "Success", Message = "Change successful" });
 		}
 
 		public ActionResult Remove([FromBody] PurchaseRequest purchaseRequest) {
-			if (purchaseRequest == null || purchaseRequest.UserID <= 0) {
+			if (purchaseRequest == null || purchaseRequest.PurchaseRequestID <= 0) {
 				return Json(new Msg { Result = "Failure", Message = "PurchaseRequest parameter is missing or invalid" });
 			}
 			//if we get here, delete the purchaseRequest
-			PurchaseRequest removePurchaseRequest = db.PurchaseRequests.Find(purchaseRequest.UserID);
+			PurchaseRequest removePurchaseRequest = db.PurchaseRequests.Find(purchaseRequest.PurchaseRequestID);
 			if (removePurchaseRequest == null) {
 				return Json(new Msg { Result = "Failure", Message = "PurchaseRequest ID not found" });
 			}

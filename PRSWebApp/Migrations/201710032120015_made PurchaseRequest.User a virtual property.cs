@@ -3,7 +3,7 @@ namespace PRSWebApp.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class purchaserequeststuff : DbMigration
+    public partial class madePurchaseRequestUseravirtualproperty : DbMigration
     {
         public override void Up()
         {

@@ -7,13 +7,13 @@ namespace PRSWebApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class purchaserequeststuff : IMigrationMetadata
+    public sealed partial class addedPurchaseRequestCloneandRejectionReason : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(purchaserequeststuff));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addedPurchaseRequestCloneandRejectionReason));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710032003204_purchase request stuff"; }
+            get { return "201710032104208_added PurchaseRequest.Clone() and RejectionReason"; }
         }
         
         string IMigrationMetadata.Source
