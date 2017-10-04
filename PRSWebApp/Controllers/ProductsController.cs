@@ -23,7 +23,7 @@ namespace PRSWebApp.Controllers
 			return Json(db.Products.ToList(), JsonRequestBehavior.AllowGet);
 		}
 
-		// Products/VendorsID
+		// Products/id
 		// will return a product or an error message
 		public ActionResult Get(int? id) {
 			//if nothing is passed in for ID

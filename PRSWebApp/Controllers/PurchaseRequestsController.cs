@@ -25,7 +25,7 @@ namespace PRSWebApp.Controllers
 			return new JsonNetResult { Data = db.PurchaseRequests.ToList() };
 		}
 
-		// PurchaseRequests/UsersID
+		// PurchaseRequests/id
 		// will return a purchaseRequest or an error message
 		public ActionResult Get(int? id) {
 			//if nothing is passed in for ID

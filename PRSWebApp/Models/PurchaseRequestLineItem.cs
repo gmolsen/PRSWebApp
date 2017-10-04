@@ -15,11 +15,21 @@ namespace PRSWebApp.Models {
 
 		[Required]
 		public int PurchaseRequestID { get; set; }
-		public PurchaseRequest PurchaseRequest { get; set; }
+		//need virtual to include Purchase Request in PurchaseRequestLineItem
+		public virtual PurchaseRequest PurchaseRequest { get; set; }
 
 		[Required]
 		public int ProductID { get; set; }
-		public Product Product { get; set; }
+		//need virtual to include Product in PurchaseRequestLineItem
+		public virtual Product Product { get; set; }
+
+		public void Clone(PurchaseRequestLineItem purchaseRequestLineItem) {
+			ProductID = purchaseRequestLineItem.ProductID;
+			Product = purchaseRequestLineItem.Product;
+			Quantity = purchaseRequestLineItem.Quantity;
+			PurchaseRequestID = purchaseRequestLineItem.PurchaseRequestID;
+			PurchaseRequest = purchaseRequestLineItem.PurchaseRequest;
+		}
 
 	}
 }
