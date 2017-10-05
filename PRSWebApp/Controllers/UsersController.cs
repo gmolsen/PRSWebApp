@@ -30,7 +30,7 @@ namespace PRSWebApp.Controllers
 			if (id == null) {
 				return Json(new Msg { Result = "Failure", Message = "ID is null" }, JsonRequestBehavior.AllowGet);
 			}
-			
+
 			//returns a user or an error message
 			User user = db.Users.Find(id);
 			//if id is not found when find is issued, you get this message as an array
@@ -45,9 +45,21 @@ namespace PRSWebApp.Controllers
 			if (user == null || user.UserName == null) {
 				return Json(new Msg { Result = "Failure", Message = "User parameter is missing or invalid" });
 			}
+			if (user.UserName.Length < 8 || user.UserName.Length > 16) {
+				return Json(new Msg { Result = "Failure", Message = "Username must be between 8 and 16 characters" });
+			}
+
+			if (user.Password.Length < 8 || user.Password.Length > 32) {
+				return Json(new Msg { Result = "Failure", Message = "Password must be between 8 and 32 characters" });
+			}
+
+			if (user.Password.Length > 30) {
+				return Json(new Msg { Result = "Failure", Message = "Password must be between 8 and 32 characters" });
+			}
 			// if we get here, add user
 			db.Users.Add(user);
-			//saves changes to database
+			//saves changes to database - add try and catch
+
 			db.SaveChanges();
 			return Json(new Msg { Result = "Success", Message = "Add successful" });
 		}

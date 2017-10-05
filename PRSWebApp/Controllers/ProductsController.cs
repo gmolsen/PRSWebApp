@@ -30,7 +30,6 @@ namespace PRSWebApp.Controllers
 			if (id == null) {
 				return Json(new Msg { Result = "Failure", Message = "ID is null" }, JsonRequestBehavior.AllowGet);
 			}
-
 			//returns a product or an error message
 			Product product = db.Products.Find(id);
 			//if id is not found when find is issued, you get this message as an array
@@ -46,6 +45,10 @@ namespace PRSWebApp.Controllers
 			if (vendor == null) {
 				return Json(new Msg { Result = "Failure", Message = "Product parameter is missing or invalid" });
 			}
+			if (product.Price <= 0) {
+				return Json(new Msg { Result = "Failure", Message = "Product price is invalid" });
+			}
+			//must add string length check
 			// if we get here, add product
 			db.Products.Add(product);
 			//saves changes to database

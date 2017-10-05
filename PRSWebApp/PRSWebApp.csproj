@@ -35,6 +35,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -195,6 +197,10 @@
     <Compile Include="Migrations\201710041542249_did some stuff.Designer.cs">
       <DependentUpon>201710041542249_did some stuff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710041904092_made length property.cs" />
+    <Compile Include="Migrations\201710041904092_made length property.Designer.cs">
+      <DependentUpon>201710041904092_made length property.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Product.cs" />
@@ -313,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710041542249_did some stuff.resx">
       <DependentUpon>201710041542249_did some stuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710041904092_made length property.resx">
+      <DependentUpon>201710041904092_made length property.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

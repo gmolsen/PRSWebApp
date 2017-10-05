@@ -32,7 +32,6 @@ namespace PRSWebApp.Models {
 	[StringLength(15)]
 	public string Status { get; set; }
 
-	[Required]
 	public double Total { get; set; }
 
 	[Required]
@@ -44,6 +43,7 @@ namespace PRSWebApp.Models {
 	public virtual User User { get; set; }
 
 		// easier to find rather than digging through controller
+		// to make a copy of an object rather than have two variables that point to the same object
 		public void Clone(PurchaseRequest purchaseRequest) {
 			UserID = purchaseRequest.UserID;
 			Description = purchaseRequest.Description;

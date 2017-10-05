@@ -46,6 +46,14 @@ namespace PRSWebApp.Controllers
 			return new JsonNetResult { Data = db.PurchaseRequests.ToList() };
 		}
 
+		// PurchaseRequestLineItems/id
+		// will return a PurchaseRequestLineItem or an error message
+		public ActionResult LineItems(int? id) {
+			//if nothing is passed in for ID
+		PurchaseRequestLineItem PurchaseRequestLineItems = db.PurchaseRequestLineItems.Find(id);
+			return new JsonNetResult { Data = db.PurchaseRequestLineItems.ToList() };
+		}
+
 		public ActionResult Add([FromBody] PurchaseRequest purchaseRequest) {
 			User users = db.Users.Find(purchaseRequest.UserID);
 			if (users == null) {
