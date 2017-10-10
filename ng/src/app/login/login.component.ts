@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-//import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import 'rxjs/add/operator/ToPromise';
 
 import { User } from '../models/User';
+import { UserService } from '../services/user.service';
+	// import { SystemService } from '../services/system.service';
 
 	//decorators are not javascript syntax
 @Component({
@@ -20,26 +23,28 @@ export class LoginComponent implements OnInit {
 
 	user: User;
 
+	message: string = " ";
+
 	login(): void {
-		let parms = "UserName=" + this.username + "&Password=" + this.password;
-		//makes call to server and passes in data (this is how we make an ajax call)
-		this.http.get("http://localhost:65241/Users/Login?" + parms)
-			.subscribe(data => { this.checkData(data);
-			});
+		this.message = "";
+		this.UserSvc.login(this.username, this.password)
+			.then(resp => this.checkData(resp));
 	}
 
-	checkData(data: any) : void {
-		//console.log(data)
-		if(data.text().length == 0)
-			console.log("NO DATA");
+	checkData(users: User[]) : void {
+		if(users.length > 0) {
+			// this.user = users[0];
+			// this.SystemSvc.LoggedInUser = this.user;
+			// console.log("Set SystemSvc logged in user to ", this.SystemSvc.LoggedInUse);
+			this.router.navigateByUrl("/home");
+		}
 		else {
-			console.log(data.json());
-			this.user = data.json();
+			this.message = "USER NAME AND/OR PASSWORD NOT FOUND";
 		}
 	}
 
   //injecting module we want to use into our component at run-time
-  constructor(private http: Http) { }
+  constructor(private UserSvc: UserService, private router: Router) { }
 
   ngOnInit() {
   	// this.http.get("http://localhost:65241/Users/Login?UserName=user&Password=user")

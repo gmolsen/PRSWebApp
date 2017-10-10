@@ -17,4 +17,17 @@ export class UserService {
 
   constructor(private http: Http) { }
 
+  	login(username: string, password: string): Promise<User[]> {
+  		let parms = "UserName=" + username + "&Password=" + password;
+  		return this.http.get(url+'Login?'+parms)
+  			.toPromise()
+  			.then(resp => resp.json() as User[])
+  			.catch(this.handleError);
+  	}
+  	//generic error handling
+  	private handleError(error:any): Promise<any> { //private functions and properties must be specified, public do not have to be specified
+  		console.error('An error has occurred', error);
+  		return Promise.reject(error.message || error);
+  	}
+
 }
