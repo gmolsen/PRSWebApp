@@ -24,6 +24,13 @@ export class UserService {
   			.then(resp => resp.json() as User[])
   			.catch(this.handleError);
   	}
+
+  	list(): Promise<User[]> {
+  		return this.http.get(url+'List')
+  			.toPromise()
+  			.then(resp => resp.json() as User[])
+  			.catch(this.handleError);
+  	}  	
   	//generic error handling
   	private handleError(error:any): Promise<any> { //private functions and properties must be specified, public do not have to be specified
   		console.error('An error has occurred', error);

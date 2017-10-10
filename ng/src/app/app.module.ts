@@ -20,6 +20,7 @@ import { HelpComponent } from './help/help.component';
 import { LoginComponent } from './login/login.component';
 
 import { UserService } from './services/user.service';
+import { UserListComponent } from './user/user-list/user-list.component';
 
   //in Angular, everything with @ is a decorator - does not end with  ;
   //@NGModule is THE module for our application
@@ -28,7 +29,7 @@ import { UserService } from './services/user.service';
     //components must be added to declarations (automatically added if command line is used to add component)
   declarations: [ //key
     AppComponent,  //values
-    MenuComponent, HeadingComponent, HomeComponent, AboutComponent, ContactComponent, HelpComponent, LoginComponent
+    MenuComponent, HeadingComponent, HomeComponent, AboutComponent, ContactComponent, HelpComponent, LoginComponent, UserListComponent
   ],
 
   imports: [//key
