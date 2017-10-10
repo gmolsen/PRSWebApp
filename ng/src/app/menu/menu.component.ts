@@ -16,6 +16,7 @@ export class MenuComponent implements OnInit {
 //creates an array of menu items and stores it inside variable menus
 menus: Menu[] = [
 	new Menu("HOME", "/home", "Home menu item"),
+  new Menu("LOGIN ", "/login", "Login menu item"),
 	new Menu("ABOUT", "/about", "About menu item"),
 	new Menu("CONTACT", "/contact", "Contact menu item"),
 	new Menu("HELP", "/help", "Help menu item")	

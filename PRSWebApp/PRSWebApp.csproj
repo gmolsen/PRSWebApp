@@ -201,6 +201,10 @@
     <Compile Include="Migrations\201710041904092_made length property.Designer.cs">
       <DependentUpon>201710041904092_made length property.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710091526297_i dont know just work.cs" />
+    <Compile Include="Migrations\201710091526297_i dont know just work.Designer.cs">
+      <DependentUpon>201710091526297_i dont know just work.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Product.cs" />
@@ -322,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710041904092_made length property.resx">
       <DependentUpon>201710041904092_made length property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091526297_i dont know just work.resx">
+      <DependentUpon>201710091526297_i dont know just work.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

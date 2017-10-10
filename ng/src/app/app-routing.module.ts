@@ -4,14 +4,16 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HelpComponent } from './help/help.component';
+import { LoginComponent } from './login/login.component';
 
-const routes: Routes = [
-	//CATCH-ALL - redirect to homepage if URL invalid
-	{ path: "", redirectTo: "/home", pathMatch: "full" },
-	{ path: "home", component: HomeComponent },
+const routes: Routes = [ //routes define where to go based on the URL; const means variable will be set and never changed
+		
+	{ path: "", redirectTo: "/home", pathMatch: "full" }, //CATCH-ALL - redirect to homepage if URL invalid
+	{ path: "home", component: HomeComponent }, //routes to each component, but stays on same page
+	{ path: "login", component: LoginComponent },
 	{ path: "about", component: AboutComponent },
 	{ path: "contact", component: ContactComponent },
-	{ path: "help", component: HelpComponent },
+	{ path: "help", component: HelpComponent }
 ];
 
 @NgModule({

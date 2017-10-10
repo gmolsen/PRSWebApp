@@ -16,6 +16,11 @@ namespace PRSWebApp.Controllers
     {
         private PRSWebAppContext db = new PRSWebAppContext();
 
+		public ActionResult Login(string UserName, string Password) {
+			User user = db.Users.SingleOrDefault(u => u.UserName == UserName && u.Password == Password);
+			return Json(user, JsonRequestBehavior.AllowGet);
+		}
+
 		//performs Json call to return list of Users
 		//this will always return an array
 		//it may have 0, 1, or more items within the array
