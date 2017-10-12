@@ -20,7 +20,16 @@ import { HelpComponent } from './help/help.component';
 import { LoginComponent } from './login/login.component';
 
 import { UserService } from './services/user.service';
+import { SystemService } from './services/system.service';
+import { VendorService } from './services/vendor.service';
 import { UserListComponent } from './user/user-list/user-list.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserAddComponent } from './user/user-add/user-add.component';
+import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
+import { VendorAddComponent } from './vendor/vendor-add/vendor-add.component';
+import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.component';
+import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
 
   //in Angular, everything with @ is a decorator - does not end with  ;
   //@NGModule is THE module for our application
@@ -29,7 +38,7 @@ import { UserListComponent } from './user/user-list/user-list.component';
     //components must be added to declarations (automatically added if command line is used to add component)
   declarations: [ //key
     AppComponent,  //values
-    MenuComponent, HeadingComponent, HomeComponent, AboutComponent, ContactComponent, HelpComponent, LoginComponent, UserListComponent
+    MenuComponent, HeadingComponent, HomeComponent, AboutComponent, ContactComponent, HelpComponent, LoginComponent, UserListComponent, UserDetailComponent, UserEditComponent, UserAddComponent, VendorListComponent, VendorAddComponent, VendorDetailComponent, VendorEditComponent
   ],
 
   imports: [//key
@@ -40,7 +49,9 @@ import { UserListComponent } from './user/user-list/user-list.component';
   ],
 
   providers: [
-    UserService],
+    UserService,
+    VendorService,
+    SystemService],
     //one or more components that will start at run-time
   bootstrap: [AppComponent] 
 })

@@ -17,8 +17,8 @@ namespace PRSWebApp.Controllers
         private PRSWebAppContext db = new PRSWebAppContext();
 
 		public ActionResult Login(string UserName, string Password) {
-			User user = db.Users.SingleOrDefault(u => u.UserName == UserName && u.Password == Password);
-			return Json(user, JsonRequestBehavior.AllowGet);
+			var users = db.Users.Where(u => u.UserName == UserName && u.Password == Password);
+			return Json(users.ToList(), JsonRequestBehavior.AllowGet);
 		}
 
 		//performs Json call to return list of Users

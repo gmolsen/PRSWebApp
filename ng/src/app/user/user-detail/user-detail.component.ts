@@ -15,6 +15,15 @@ export class UserDetailComponent implements OnInit {
 
 	user: User;
 
+	remove() {
+		console.log("remove()");
+		this.UserSvc.remove(this.user)
+			.then(resp => { 
+				console.log(resp); 
+				this.router.navigate(["/users"]); 
+			});
+	}
+
   constructor(private UserSvc: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {

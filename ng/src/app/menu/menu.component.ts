@@ -18,6 +18,7 @@ menus: Menu[] = [
 	new Menu("HOME", "/home", "Home menu item"),
   new Menu("LOGIN ", "/login", "Login menu item"),
   new Menu("USERS ", "/users", "User list"),
+  new Menu("VENDORS ", "/vendors", "Vendor list"),
 	new Menu("ABOUT", "/about", "About menu item"),
 	new Menu("CONTACT", "/contact", "Contact menu item"),
 	new Menu("HELP", "/help", "Help menu item")	

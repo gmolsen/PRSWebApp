@@ -5,6 +5,8 @@ import 'rxjs/add/operator/ToPromise';
 
 import { User } from '../models/User';
 import { UserService } from '../services/user.service';
+import { SystemService } from '../services/system.service';
+
 	// import { SystemService } from '../services/system.service';
 
 	//decorators are not javascript syntax
@@ -33,9 +35,9 @@ export class LoginComponent implements OnInit {
 
 	checkData(users: User[]) : void {
 		if(users.length > 0) {
-			// this.user = users[0];
-			// this.SystemSvc.LoggedInUser = this.user;
-			// console.log("Set SystemSvc logged in user to ", this.SystemSvc.LoggedInUse);
+			this.user = users[0];
+			this.SystemSvc.setLoggedIn(this.user);
+			console.log("Set SystemSvc logged in user to ", this.SystemSvc.LoggedInUser);
 			this.router.navigateByUrl("/home");
 		}
 		else {
@@ -44,7 +46,7 @@ export class LoginComponent implements OnInit {
 	}
 
   //injecting module we want to use into our component at run-time
-  constructor(private UserSvc: UserService, private router: Router) { }
+  constructor(private UserSvc: UserService, private SystemSvc: SystemService, private router: Router) { }
 
   ngOnInit() {
   	// this.http.get("http://localhost:65241/Users/Login?UserName=user&Password=user")
