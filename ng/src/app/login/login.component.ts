@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 import 'rxjs/add/operator/ToPromise';
 
 import { User } from '../models/User';
@@ -49,8 +50,8 @@ export class LoginComponent implements OnInit {
   constructor(private UserSvc: UserService, private SystemSvc: SystemService, private router: Router) { }
 
   ngOnInit() {
-  	// this.http.get("http://localhost:65241/Users/Login?UserName=user&Password=user")
-  	// 	.subscribe(data => { console.log(data.json()); });
+  	 // this.http.get("http://localhost:65241/Users/Login?UserName=user&Password=user")
+  	 // 	.subscribe(data => { console.log(data.json()); });
   }
 
 }

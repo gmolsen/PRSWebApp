@@ -1,0 +1,30 @@
+<menu-comp></menu-comp>
+<div>
+
+	<div><span class="jumbotron"><h2>Product List</h2></span>
+		<span class="CreateNew"><a routerLink="/products/add">Add New</a></span></div>
+		<!-- *ngIf looks at variable "products" in component; if null, table remains unfilled, once table is populated, it fills -->
+	<table class="table" *ngIf="products">
+		<tr>
+			<th>Vendor Part Number</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Unit</th>
+			<th>Photo</th>
+			<th>Vendor</th>
+		</tr>
+			<!-- for each loop-->
+		<tr *ngFor="let product of products">
+			<td>{{product.VendorPartNumber}}</td>
+			<td>{{product.Name}}</td>
+			<td>{{product.Price}} </td>
+			<td>{{product.Unit}} </td>
+			<td>{{product.PhotoPath}} </td>
+			<td>{{product.Vendor}} </td>
+			<td>
+				<a routerLink="/products/detail/{{product.ProductID}}">Detail</a>
+				<a routerLink="/products/edit/{{product.ProductID}}">Edit</a>
+			</td>
+		</tr>
+	</table>
+</div>

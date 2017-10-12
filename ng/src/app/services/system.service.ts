@@ -7,6 +7,7 @@ import { User } from '../models/User';
 export class SystemService {
 
 	LoggedInUser: User;
+	
 	getLoggedIn(): User {
 		console.log("SystemService", "getLoggedIn()", this.LoggedInUser);
 		return this.LoggedInUser;

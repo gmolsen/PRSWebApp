@@ -1,0 +1,21 @@
+<menu-comp></menu-comp>
+<div>
+
+	<div><span class="jumbotron"><h2>Product Detail</h2></span>
+		<span class="CreateNew"><a routerLink="/products/add">Add New</a></span>
+	</div>
+
+	<table class="table" *ngIf="product">
+		<tr><th>VendorPartNumber</th><td>{{product.VendorPartNumber}}</td></tr>
+		<tr><th>Name</th><td>{{product.Name}}</td></tr>
+		<tr><th>Price</th><td>{{product.Price}}</td></tr>
+		<tr><th>Unit</th><td>{{product.Unit}}</td></tr>
+		<tr><th>Photo</th><td>{{product.PhotoPath}}</td></tr>
+		<tr><th>Vendor</th><td>{{product.Vendor}}</td></tr>
+	</table>
+		
+	<div class="text-center">
+		<button class="btn btn-danger" (click)="remove()">Delete</button>
+	</div>
+
+</div>
