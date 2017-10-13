@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs';
+//import { Observable } from 'rxjs';
 
 import { Product } from '../models/Product';
 
@@ -31,16 +31,16 @@ export class ProductService {
       .catch(this.handleError);
     }
 
-  //   change(product: Product): Promise<any>{
-  //   // This function requires the product to be passed in, so we can change it
-  //     //Because we are making a change, just like when we use the Postman app,
-  //     //we need to use "post" instead of "get"
-  //     return this.http.post(url+'Change', product)
-  //     .toPromise()
-  //     //The .then determines what a Promise returns, in this case, a specified product
-  //     .then(resp => resp.json() || {})
-  //     .catch(this.handleError);
-  // }
+    change(product: Product): Promise<any>{
+    // This function requires the product to be passed in, so we can change it
+      //Because we are making a change, just like when we use the Postman app,
+      //we need to use "post" instead of "get"
+      return this.http.post(url+'Change', product)
+      .toPromise()
+      //The .then determines what a Promise returns, in this case, a specified product
+      .then(resp => resp.json() || {})
+      .catch(this.handleError);
+  }
 
   add(product: Product): Promise<any>{
       return this.http.post(url+'Add', product)

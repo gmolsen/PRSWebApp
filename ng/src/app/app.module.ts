@@ -23,17 +23,21 @@ import { UserService } from './services/user.service';
 import { SystemService } from './services/system.service';
 import { VendorService } from './services/vendor.service';
 import { ProductService } from './services/product.service';
+
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserAddComponent } from './user/user-add/user-add.component';
+
 import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
 import { VendorAddComponent } from './vendor/vendor-add/vendor-add.component';
 import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.component';
 import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
+
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { ProductAddComponent } from './product/product-add/product-add.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
 
   //in Angular, everything with @ is a decorator - does not end with  ;
   //@NGModule is THE module for our application
@@ -42,7 +46,7 @@ import { ProductAddComponent } from './product/product-add/product-add.component
     //components must be added to declarations (automatically added if command line is used to add component)
   declarations: [ //key
     AppComponent,  //values
-    MenuComponent, HeadingComponent, HomeComponent, AboutComponent, ContactComponent, HelpComponent, LoginComponent, UserListComponent, UserDetailComponent, UserEditComponent, UserAddComponent, VendorListComponent, VendorAddComponent, VendorDetailComponent, VendorEditComponent, ProductListComponent, ProductDetailComponent, ProductAddComponent
+    MenuComponent, HeadingComponent, HomeComponent, AboutComponent, ContactComponent, HelpComponent, LoginComponent, UserListComponent, UserDetailComponent, UserEditComponent, UserAddComponent, VendorListComponent, VendorAddComponent, VendorDetailComponent, VendorEditComponent, ProductListComponent, ProductDetailComponent, ProductAddComponent, ProductEditComponent
   ],
 
   imports: [//key

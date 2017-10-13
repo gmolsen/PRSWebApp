@@ -19,6 +19,8 @@ import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component'
 
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { ProductAddComponent } from './product/product-add/product-add.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
 
 
 
@@ -39,6 +41,8 @@ const routes: Routes = [ //routes define where to go based on the URL; const mea
 	
 	{ path: "products", component: ProductListComponent },
 	{ path: "products/detail/:id", component: ProductDetailComponent },
+	{ path: "products/edit/:id", component: ProductEditComponent },
+	{ path: "products/add", component: ProductAddComponent },
 
 	{ path: "about", component: AboutComponent },
 	{ path: "contact", component: ContactComponent },

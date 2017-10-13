@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/Product';
-
-import { Vendor } from '../models/Vendor';
+import { Vendor } from '../../models/Vendor';
+import { VendorService } from '../../services/vendor.service';
 
 @Component({
 
@@ -14,7 +14,9 @@ import { Vendor } from '../models/Vendor';
 })
 export class ProductAddComponent implements OnInit {
 
-	product: Product = new Product(0, '', '', 0, '', '', 0, Vendor);
+	product: Product = new Product(0, '', '', 0, '', '', 0);
+
+	vendors: Vendor[];
 	
 	add() {
 		this.ProductSvc.add(this.product).then(
@@ -25,9 +27,15 @@ export class ProductAddComponent implements OnInit {
 		);
 	}
 
-  constructor(private ProductSvc: ProductService, private router: Router) { }
+	getVendors(): void {
+	this.VendorSvc.list().then(
+	resp => this.vendors = resp);
+}
+
+  constructor(private ProductSvc: ProductService, private VendorSvc: VendorService, private router: Router) { }
 
   ngOnInit() {
+  		this.getVendors();
   }
 
 }
