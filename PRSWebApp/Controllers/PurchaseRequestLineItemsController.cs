@@ -28,25 +28,25 @@ namespace PRSWebApp.Controllers
 			db.SaveChanges();
 	}
 
-		//performs Json call to return list of PurchaseRequestLineItems
+		//performs Json call to return list of PurchaseRequestLineItems for a specific Purchase Request
 		//this will always return an array
 		//it may have 0, 1, or more items within the array
-		public ActionResult List() {
+		public ActionResult List(int? PurchaseRequestID) {
 			//return Json(db.PurchaseRequestLineItems.ToList(), JsonRequestBehavior.AllowGet);
-			//changes format of date data shipped down to JS
-			return new JsonNetResult { Data = db.PurchaseRequestLineItems.ToList() };
+			return new JsonNetResult { Data = db.PurchaseRequestLineItems.Where(p => p.PurchaseRequestID
+			== PurchaseRequestID).ToList() };
 		}
 
 		// PurchaseRequestLineItems/id
 		// will return a PurchaseRequestLineItem or an error message
-		public ActionResult Get(int? id) {
+		public ActionResult Get(int? PurchaseRequestID) {
 			//if nothing is passed in for ID
-			if (id == null) {
+			if (PurchaseRequestID == null) {
 				return Json(new Msg { Result = "Failure", Message = "ID is null" }, JsonRequestBehavior.AllowGet);
 			}
 
 			//returns a PurchaseRequestLineItem or an error message
-			PurchaseRequestLineItem PurchaseRequestLineItem = db.PurchaseRequestLineItems.Find(id);
+			PurchaseRequestLineItem PurchaseRequestLineItem = db.PurchaseRequestLineItems.Find(PurchaseRequestID);
 			//if id is not found when find is issued, you get this message as an array
 			if (PurchaseRequestLineItem == null) {
 				return Json(new Msg { Result = "Failure", Message = "ID not found" }, JsonRequestBehavior.AllowGet);

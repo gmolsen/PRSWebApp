@@ -45,6 +45,7 @@ import { PurchaseRequestDetailComponent } from './purchase-request/purchase-requ
 import { PurchaseRequestAddComponent } from './purchase-request/purchase-request-add/purchase-request-add.component';
 import { PurchaseRequestEditComponent } from './purchase-request/purchase-request-edit/purchase-request-edit.component';
 import { PurchaseRequestReviewComponent } from './purchase-request/purchase-request-review/purchase-request-review.component';
+import { PurchaseRequestLineItemListComponent } from './purchase-request-line-item/purchase-request-line-item-list/purchase-request-line-item-list.component';
 
   //in Angular, everything with @ is a decorator - does not end with  ;
   //@NGModule is THE module for our application
@@ -76,7 +77,7 @@ import { PurchaseRequestReviewComponent } from './purchase-request/purchase-requ
     PurchaseRequestDetailComponent, 
     PurchaseRequestAddComponent, 
     PurchaseRequestEditComponent, 
-    PurchaseRequestReviewComponent, 
+    PurchaseRequestReviewComponent, PurchaseRequestLineItemListComponent, 
   ],
 
   imports: [//key
