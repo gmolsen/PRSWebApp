@@ -26,6 +26,7 @@ import { PurchaseRequestListComponent } from './purchase-request/purchase-reques
 import { PurchaseRequestDetailComponent } from './purchase-request/purchase-request-detail/purchase-request-detail.component';
 import { PurchaseRequestAddComponent } from './purchase-request/purchase-request-add/purchase-request-add.component';
 import { PurchaseRequestEditComponent } from './purchase-request/purchase-request-edit/purchase-request-edit.component';
+import { PurchaseRequestReviewComponent } from './purchase-request/purchase-request-review/purchase-request-review.component';
 
 
 
@@ -54,6 +55,7 @@ const routes: Routes = [ //routes define where to go based on the URL; const mea
 	{ path: "purchaserequests/detail/:id", component: PurchaseRequestDetailComponent },
 	{ path: "purchaserequests/edit/:id", component: PurchaseRequestEditComponent },
 	{ path: "purchaserequests/add", component: PurchaseRequestAddComponent },
+	{ path: "purchaserequests/review", component: PurchaseRequestReviewComponent },
 
 	{ path: "about", component: AboutComponent },
 	{ path: "contact", component: ContactComponent },

@@ -27,6 +27,13 @@ export class PurchaseRequestService {
   			.catch(this.handleError);
   	} 
 
+    review(): Promise<PurchaseRequest[]> {
+      return this.http.get(url+'Review')
+        .toPromise()
+        .then(resp => resp.json() as PurchaseRequest[])
+        .catch(this.handleError);
+    } 
+
     get(id): Promise<PurchaseRequest> {
       return this.http.get(url+'Get/' + id)
       .toPromise()

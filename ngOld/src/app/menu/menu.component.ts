@@ -21,6 +21,7 @@ menus: Menu[] = [
   new Menu("VENDORS ", "/vendors", "Vendor list"),
   new Menu("PRODUCTS ", "/products", "Product list"),
   new Menu("PURCHASEREQUESTS ", "/purchaserequests", "Purchase Request list"),
+  new Menu("REVIEW ", "/purchaserequests/review", "Review list"),
 	new Menu("ABOUT", "/about", "About menu item"),
 	new Menu("CONTACT", "/contact", "Contact menu item"),
 	new Menu("HELP", "/help", "Help menu item")	

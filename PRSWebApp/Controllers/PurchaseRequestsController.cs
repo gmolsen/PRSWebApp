@@ -25,6 +25,12 @@ namespace PRSWebApp.Controllers
 			return new JsonNetResult { Data = db.PurchaseRequests.ToList() };
 		}
 
+		public ActionResult Review() {
+			//return Json(db.PurchaseRequests.ToList(), JsonRequestBehavior.AllowGet);
+			//changes format of date data shipped down to JS
+			return new JsonNetResult { Data = db.PurchaseRequests.Where(pr => pr.Status == "Review").ToList() };
+		}
+
 		// PurchaseRequests/id
 		// will return a purchaseRequest or an error message
 		public ActionResult Get(int? id) {
@@ -34,7 +40,7 @@ namespace PRSWebApp.Controllers
 			}
 
 			//returns a purchaseRequest or an error message
-			PurchaseRequest purchaseRequest = db.PurchaseRequests.Find(id);
+			var purchaseRequest = db.PurchaseRequests.Find(id);
 			//if id is not found when find is issued, you get this message as an array
 			if (purchaseRequest == null) {
 				return Json(new Msg { Result = "Failure", Message = "ID not found" }, JsonRequestBehavior.AllowGet);
@@ -43,7 +49,7 @@ namespace PRSWebApp.Controllers
 			//return Json(purchaseRequest, JsonRequestBehavior.AllowGet);
 
 			//changes format of date data shipped down to JS
-			return new JsonNetResult { Data = db.PurchaseRequests.ToList() };
+			return new JsonNetResult { Data = purchaseRequest };
 		}
 
 		// PurchaseRequestLineItems/id
