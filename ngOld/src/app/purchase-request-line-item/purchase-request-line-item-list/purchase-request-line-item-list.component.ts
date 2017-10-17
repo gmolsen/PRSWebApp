@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -24,7 +25,7 @@ export class PurchaseRequestLineItemListComponent implements OnInit {
 
   purchaserequestlineitems: PurchaseRequestLineItem[];
 
-  product: Product;
+  purchaserequestlineitem: PurchaseRequestLineItem;
 
   purchaserequest: PurchaseRequest;
 
@@ -37,15 +38,25 @@ export class PurchaseRequestLineItemListComponent implements OnInit {
       });
   }
 
-  constructor(private PurchaseRequestLineItemSvc: PurchaseRequestLineItemService) { }
+  remove() {
+    console.log("remove()");
+    this.PurchaseRequestLineItemSvc.remove(this.purchaserequestlineitem)
+      .then(resp => { 
+        console.log(resp); 
+      });
+  }
+
+  constructor(private PurchaseRequestLineItemSvc: PurchaseRequestLineItemService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() { console.log("ngOnInIt");
 
   this.route.paramMap
        .switchMap((params: ParamMap) =>
-         this.PurchaseRequestLineItemSvc.get(params.get('id')))
+           //params gets id out of URL and passes it into getByPurchaseRequestID function
+         this.PurchaseRequestLineItemSvc.getByPurchaseRequestId(params.get('id')))
        //Subscribe reads the data currently held by PurchaseRequest, and stores it in the purchaserequest variable above
-           .subscribe((purchaserequest: PurchaseRequest) => this.purchaserequestandlines = purchaserequestandlines);
+           .subscribe((purchaserequestandlines: PurchaseRequestAndLines) => this.purchaserequestandlines = purchaserequestandlines);
 
     this.getPurchaseRequestLineItems();
   }

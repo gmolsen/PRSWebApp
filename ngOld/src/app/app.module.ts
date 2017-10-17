@@ -24,6 +24,7 @@ import { SystemService } from './services/system.service';
 import { VendorService } from './services/vendor.service';
 import { ProductService } from './services/product.service';
 import { PurchaseRequestService } from './services/purchase-request.service';
+import { PurchaseRequestLineItemService } from './services/purchase-request-line-item.service';
 
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
@@ -47,6 +48,7 @@ import { PurchaseRequestEditComponent } from './purchase-request/purchase-reques
 import { PurchaseRequestReviewComponent } from './purchase-request/purchase-request-review/purchase-request-review.component';
 
 import { PurchaseRequestLineItemListComponent } from './purchase-request-line-item/purchase-request-line-item-list/purchase-request-line-item-list.component';
+import { PurchaseRequestLineItemAddComponent } from './purchase-request-line-item/purchase-request-line-item-add/purchase-request-line-item-add.component';
 
   //in Angular, everything with @ is a decorator - does not end with  ;
   //@NGModule is THE module for our application
@@ -79,7 +81,7 @@ import { PurchaseRequestLineItemListComponent } from './purchase-request-line-it
     PurchaseRequestAddComponent, 
     PurchaseRequestEditComponent, 
     PurchaseRequestReviewComponent, 
-    PurchaseRequestLineItemListComponent, 
+    PurchaseRequestLineItemListComponent, PurchaseRequestLineItemAddComponent, 
   ],
 
   imports: [//key
@@ -94,6 +96,7 @@ import { PurchaseRequestLineItemListComponent } from './purchase-request-line-it
     VendorService,
     ProductService,
     PurchaseRequestService,
+    PurchaseRequestLineItemService,
     SystemService
   ],
     //one or more components that will start at run-time

@@ -17,10 +17,12 @@
 		<tr><th>User</th><td>{{purchaserequest.User.UserName}}</td></tr>
 	</table>
 		
-	<div class="text-center" *ngIf="purchaserequest">
+	<div class="text-center">
 		<button class="btn btn-danger" (click)="remove()">Delete</button>
-				<!-- review button appears only if Status = New or REJECTED -->
-			<button class="btn btn-primary" (click)="review()" *ngIf="purchaserequest.Status == 'New'">Review</button>
+			<!-- review button appears only if Status = New or REJECTED -->
+		<span *ngIf="purchaserequest.Status == 'New' || purchaserequest.Status == 'REJECTED'">
+			<button class="btn btn-primary" (click)="review()">Review</button>
+		</span>
 	</div>
 
 </div>

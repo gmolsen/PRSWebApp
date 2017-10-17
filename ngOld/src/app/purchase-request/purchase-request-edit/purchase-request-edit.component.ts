@@ -40,6 +40,7 @@ export class PurchaseRequestEditComponent implements OnInit {
   ngOnInit() {
   	this.route.paramMap
   	 	.switchMap((params: ParamMap) =>
+  	 		//params gets id out of URL and passes it into get function
   	 		this.PurchaseRequestSvc.get(params.get('id')))
   	 	//Subscribe reads the data currently held by PurchaseRequest, and stores it in the purchaserequest variable above
            .subscribe((purchaserequest: PurchaseRequest) => this.purchaserequest = purchaserequest);
