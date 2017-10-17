@@ -15,6 +15,22 @@ namespace PRSWebApp.Controllers
 	public class PurchaseRequestLineItemsController : Controller {
 		private PRSWebAppContext db = new PRSWebAppContext();
 
+		// creates a view model for viewing data from data base; cannot store data
+		struct prliType {
+			public PurchaseRequest PurchaseRequest;
+			public IEnumerable<PurchaseRequestLineItem> PurchaseRequestLineItems;
+		}
+
+		public ActionResult GetByPurchaseRequestID(int? id) {
+			if (id == null) {
+				return Json(new Msg { Result = "Failure", Message = "ID is null" }, JsonRequestBehavior.AllowGet);
+			}
+			var purchaseRequest = db.PurchaseRequests.Find(id);
+			var purchaseRequestLineItems = db.PurchaseRequestLineItems.Where(p => p.PurchaseRequestID == id);
+			var prli = new prliType { PurchaseRequest = purchaseRequest, PurchaseRequestLineItems = purchaseRequestLineItems };
+			return new JsonNetResult { Data = prli };
+		}
+
 		//Purchase request total is updated 
 		private void UpdatePurchaseRequestTotal(int prid) {
 			double total = 0.0;

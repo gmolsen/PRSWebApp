@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 
 import { PurchaseRequestLineItem } from '../models/PurchaseRequestLineItem';
 
-
+import { PurchaseRequestAndLines } from '../models/PurchaseRequestAndLines';
 import { PurchaseRequest } from '../models/PurchaseRequest';
 import { Product } from '../models/Product';
 
@@ -20,6 +20,13 @@ const url: string = urlBase + mvcCtrl;
 export class PurchaseRequestLineItemService {
 
   constructor(private http: Http) { }
+
+  getByPurchaseRequestId(id): Promise<PurchaseRequestAndLines> {
+    return this.http.get(url +'GetByPurchaseRequestID/'+ id)
+      .toPromise()
+      .then(resp => resp.json() as PurchaseRequestAndLines)
+      .catch(this.handleError)
+  }
 
   list(): Promise<PurchaseRequestLineItem[]> {
   		return this.http.get(url+'List')

@@ -1,1 +1,35 @@
+<menu-comp></menu-comp>
+<div>
 
+	<div><span class="jumbotron"><h2>Purchase Request with Lines</h2></span>
+		<span class="CreateNew"><a routerLink="/purchaserequests/add">Add New</a></span></div>
+		<!-- *ngIf looks at variable "products" in component; if null, table remains unfilled, once table is populated, it fills -->
+	<table class="table" *ngIf="">
+		<tr>
+			<th>Description</th>
+			<th>Status</th>
+			<th>Total</th>
+		</tr>
+		<tr *ngFor="let purchaserequest of purchaserequests">
+			<td>{{purchaserequest.Description}}</td>
+			<td>{{purchaserequest.Status}}</td>
+			<td>{{purchaserequest.Total}} </td>
+		</tr>
+		<tr>
+			<th>Product</th>
+			<th>Quantity</th>
+			<th>Subtotal</th>
+			<th>Actions</th>
+		</tr>
+		<tr *ngFor="let purchaserequest of purchaserequests">
+			<td>{{purchaserequest.}}</td>
+			<td>{{purchaserequest.Justification}}</td>
+			<td>{{purchaserequest.RejectionReason}} </td>
+			<td>{{purchaserequest.DateNeeded}} </td>
+			<td>
+				<a routerLink="/purchaserequests/detail/{{purchaserequest.PurchaseRequestID}}">Detail</a>
+				<a routerLink="/purchaserequests/edit/{{purchaserequest.PurchaseRequestID}}">Edit</a>
+			</td>
+		</tr>
+	</table>
+</div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 
+import { PurchaseRequestAndLines } from '../../models/PurchaseRequestAndLines';
+
 import { PurchaseRequestLineItem } from '../../models/PurchaseRequestLineItem';
 import { PurchaseRequestLineItemService } from '../../services/purchase-request-line-item.service';
 
@@ -17,6 +19,8 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./purchase-request-line-item-list.component.css']
 })
 export class PurchaseRequestLineItemListComponent implements OnInit {
+
+  purchaserequestandlines: PurchaseRequestAndLines;
 
   purchaserequestlineitems: PurchaseRequestLineItem[];
 
@@ -36,6 +40,13 @@ export class PurchaseRequestLineItemListComponent implements OnInit {
   constructor(private PurchaseRequestLineItemSvc: PurchaseRequestLineItemService) { }
 
   ngOnInit() { console.log("ngOnInIt");
+
+  this.route.paramMap
+       .switchMap((params: ParamMap) =>
+         this.PurchaseRequestLineItemSvc.get(params.get('id')))
+       //Subscribe reads the data currently held by PurchaseRequest, and stores it in the purchaserequest variable above
+           .subscribe((purchaserequest: PurchaseRequest) => this.purchaserequestandlines = purchaserequestandlines);
+
     this.getPurchaseRequestLineItems();
   }
 }
