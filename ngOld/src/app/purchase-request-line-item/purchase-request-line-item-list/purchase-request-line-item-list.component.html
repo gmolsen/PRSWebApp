@@ -26,11 +26,15 @@
 			<td>{{purchaserequestlineitem.Product.Name}}</td>
 			<td>{{purchaserequestlineitem.Quantity}}</td>
 			<td>{{purchaserequestlineitem.Quantity * purchaserequestlineitem.Product.Price | currency:'USD':true}} </td>
-			<!-- <td><a (click)="remove()">Delete</a> -->
+			<!-- <td><a (click)="remove()">Delete</a></td> -->
 			<!-- <td>
-				<a routerLink="/purchaserequestlineitems/detail/{{purchaserequest.PurchaseRequestID}}">Detail</a>
+				<a routerLink="/purchaserequestlineitems/detail/{{purchaserequest.PurchaseRequestID}}">Accept</a>
 				<a routerLink="/purchaserequestlineitems/edit/{{purchaserequest.PurchaseRequestID}}">Edit</a>
 			</td> -->
 		</tr>
 	</table>
+	<div class="text-center">
+			<button class="btn btn-success" (click)="accept()">Accept</button>
+			<button class="btn btn-danger" (click)="reject()">Reject</button>
+	</div>
 </div>

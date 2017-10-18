@@ -48,6 +48,8 @@ import { PurchaseRequestEditComponent } from './purchase-request/purchase-reques
 import { PurchaseRequestReviewComponent } from './purchase-request/purchase-request-review/purchase-request-review.component';
 
 import { PurchaseRequestLineItemListComponent } from './purchase-request-line-item/purchase-request-line-item-list/purchase-request-line-item-list.component';
+//import { PurchaseRequestLineItemAddComponent } from './purchase-request-line-item/purchase-request-line-item-add/purchase-request-line-item-add.component';
+import { PurchaseRequestLineItemEditComponent } from './purchase-request-line-item/purchase-request-line-item-edit/purchase-request-line-item-edit.component';
 import { PurchaseRequestLineItemAddComponent } from './purchase-request-line-item/purchase-request-line-item-add/purchase-request-line-item-add.component';
 
   //in Angular, everything with @ is a decorator - does not end with  ;
@@ -81,7 +83,9 @@ import { PurchaseRequestLineItemAddComponent } from './purchase-request-line-ite
     PurchaseRequestAddComponent, 
     PurchaseRequestEditComponent, 
     PurchaseRequestReviewComponent, 
-    PurchaseRequestLineItemListComponent, PurchaseRequestLineItemAddComponent, 
+    PurchaseRequestLineItemListComponent, 
+    //PurchaseRequestLineItemAddComponent, 
+    PurchaseRequestLineItemEditComponent, PurchaseRequestLineItemAddComponent, 
   ],
 
   imports: [//key

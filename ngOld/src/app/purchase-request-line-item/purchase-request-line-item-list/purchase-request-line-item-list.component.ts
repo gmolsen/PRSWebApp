@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute, ParamMap} from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/switchMap';
 
 import { PurchaseRequestAndLines } from '../../models/PurchaseRequestAndLines';
 
@@ -46,7 +47,29 @@ export class PurchaseRequestLineItemListComponent implements OnInit {
       });
   }
 
-  constructor(private PurchaseRequestLineItemSvc: PurchaseRequestLineItemService,
+  accept() {
+    console.log("accept");
+    this.purchaserequestandlines.PurchaseRequest.Status = "ACCEPTED"
+    this.PurchaseRequestSvc.change(this.purchaserequest)
+      .then(resp => { 
+        console.log(resp); 
+        this.router.navigate(["/purchaserequests"]); 
+      });
+  }
+
+    reject() {
+    console.log("reject");
+    this.purchaserequestandlines.PurchaseRequest.Status = "REJECTED"
+    this.PurchaseRequestSvc.change(this.purchaserequest)
+      .then(resp => { 
+        console.log(resp); 
+        this.router.navigate(["/purchaserequests"]); 
+      });
+  }
+
+  constructor(private PurchaseRequestSvc: PurchaseRequestService,
+    private PurchaseRequestLineItemSvc: PurchaseRequestLineItemService,
+     private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit() { console.log("ngOnInIt");
