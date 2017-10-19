@@ -26,31 +26,34 @@ export class PurchaseRequestLineItemListComponent implements OnInit {
 
   purchaserequestlineitems: PurchaseRequestLineItem[];
 
-  purchaserequestlineitem: PurchaseRequestLineItem;
+    //creates instance of PurchaseRequestLineItem to be used below by the remove function
+  purchaserequestlineitem: PurchaseRequestLineItem = new PurchaseRequestLineItem(0, 0, 0, 1);
 
   purchaserequest: PurchaseRequest;
 
-  getPurchaseRequestLineItems(): void {
-    console.log("About to get purchase requests");
-    this.PurchaseRequestLineItemSvc.list()
-      .then(resp => {
-        console.log("List of purchase requests: ", resp);
-        this.purchaserequestlineitems = resp
-      });
-  }
+  // getPurchaseRequestLineItems(): void {
+  //   console.log("About to get purchase requests");
+  //   this.PurchaseRequestLineItemSvc.list()
+  //     .then(resp => {
+  //       console.log("List of purchase requests: ", resp);
+  //       this.purchaserequestlineitems = resp
+  //     });
+  // }
 
-  remove() {
-    console.log("remove()");
+    //PurchaseRequestLineItemID is passed in from HTML as a parameter of the remove() function
+  remove(id) {
+    this.purchaserequestlineitem.PurchaseRequestLineItemID = id;
     this.PurchaseRequestLineItemSvc.remove(this.purchaserequestlineitem)
       .then(resp => { 
         console.log(resp); 
+        this.router.navigate(["/purchaserequests"]); 
       });
   }
 
   accept() {
-    console.log("accept");
     this.purchaserequestandlines.PurchaseRequest.Status = "ACCEPTED"
-    this.PurchaseRequestSvc.change(this.purchaserequest)
+    console.log(this.purchaserequestandlines.PurchaseRequest)
+    this.PurchaseRequestSvc.change(this.purchaserequestandlines.PurchaseRequest)
       .then(resp => { 
         console.log(resp); 
         this.router.navigate(["/purchaserequests"]); 
@@ -60,7 +63,8 @@ export class PurchaseRequestLineItemListComponent implements OnInit {
     reject() {
     console.log("reject");
     this.purchaserequestandlines.PurchaseRequest.Status = "REJECTED"
-    this.PurchaseRequestSvc.change(this.purchaserequest)
+    console.log(this.purchaserequestandlines.PurchaseRequest)
+    this.PurchaseRequestSvc.change(this.purchaserequestandlines.PurchaseRequest)
       .then(resp => { 
         console.log(resp); 
         this.router.navigate(["/purchaserequests"]); 
@@ -81,6 +85,6 @@ export class PurchaseRequestLineItemListComponent implements OnInit {
        //Subscribe reads the data currently held by PurchaseRequest, and stores it in the purchaserequest variable above
            .subscribe((purchaserequestandlines: PurchaseRequestAndLines) => this.purchaserequestandlines = purchaserequestandlines);
 
-    this.getPurchaseRequestLineItems();
+    // this.getPurchaseRequestLineItems();
   }
 }

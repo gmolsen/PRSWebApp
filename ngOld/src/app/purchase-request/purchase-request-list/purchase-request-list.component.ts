@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 
+import { SystemService } from '../../services/system.service';
+
 import { PurchaseRequest } from '../../models/PurchaseRequest';
 import { PurchaseRequestService } from '../../services/purchase-request.service';
 
@@ -29,6 +31,7 @@ export class PurchaseRequestListComponent implements OnInit {
   }
 
   constructor(private PurchaseRequestSvc: PurchaseRequestService) { }
+
 
   ngOnInit() { console.log("ngOnInIt");
     this.getPurchaseRequests();

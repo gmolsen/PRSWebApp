@@ -44,7 +44,7 @@
 		<div class='col-md-9'>
 			<!-- <date-picker ngModel name='DateNeeded'></date-picker> -->
 			<input class='form-control' name='DateNeeded' type='text' id='purchaserequest-DateNeeded' 
-				[(ngModel)]='purchaseRequest.DateNeeded' placeholder="Date Needed">
+				[(ngModel)]='purchaserequest.DateNeeded' placeholder="Date Needed">
 		</div>
 	</div>
 
@@ -60,7 +60,7 @@
 		<label class='col-md-3  control-label' for="purchaserequest-Status">Status</label>
 		<div class='col-md-9'>
 			<input class='form-control' name='Status' type='text' id='purchaserequest-Status' 
-				[(ngModel)]='purchaserequest.Status' placeholder="Status" disabled>
+				[(ngModel)]='purchaserequest.Status' placeholder="Status">
 		</div>
 	</div>
 
@@ -76,7 +76,7 @@
 		<label class='col-md-3  control-label' for="purchaseRequest-User">User</label>
 		<div class='col-md-9'>
 			<input class='form-control' name='User' type='text' id='purchaseRequest-User' 
-				value='{{loggedInUser.UserName}}' placeholder="User" disabled>
+				[(ngModel)]='purchaserequest.User.UserName' placeholder="User" disabled>
 		</div>
 	</div>
 

@@ -1,3 +1,38 @@
-<p>
-  purchase-request-line-item-add works!
-</p>
+<menu-comp></menu-comp>
+<div class="form-horizontal" style="margin: 20px;">
+
+	<div><span class="PageTitle">Line Item Add</span></div>
+
+	<div>
+
+	<form>
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="Product">Product</label>
+		<div class='col-md-9'>
+			<select [(ngModel)]="purchaserequestlineitem.ProductID" class='form-control' name='Product' id='Product'>
+				<option *ngFor="let product of products" [ngValue]="product.ProductID">{{product.Name}}</option>
+			</select>
+		</div>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-3  control-label' for="quantity">Quantity</label>
+		<div class='col-md-9'>
+			<input class='form-control' name='Quantity' type='Quantity' id='quantity' 
+				[(ngModel)]="purchaserequestlineitem.Quantity" placeholder="Quantity">
+		</div>
+	</div>
+
+	<div class='form-group'>
+		<button (click)='add()' id='add' class='col-md-11 col-md-offset-1 btn btn-primary'>Add</button>
+	</div>
+
+	<div class='form-group' >
+		<label class='col-md-10 col-md-offset-1 text-left'>{{message}}&nbsp;</label>
+	</div>
+
+	</form>
+
+	</div>
+</div>

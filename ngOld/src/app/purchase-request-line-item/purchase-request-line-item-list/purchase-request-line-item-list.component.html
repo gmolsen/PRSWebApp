@@ -1,10 +1,10 @@
 <menu-comp></menu-comp>
-<div>
+<div *ngIf="purchaserequestandlines">
 
 	<div><span class="jumbotron"><h2>Purchase Request with Lines</h2></span>
-		<span class="CreateNew"><a routerLink="/purchaserequestlineitems/add">Add New</a></span></div>
+		<span class="CreateNew"><a routerLink="/purchaserequestlineitems/add/{{purchaserequestandlines.PurchaseRequest.PurchaseRequestID}}">Add New</a></span></div>
 		<!-- *ngIf looks at variable "products" in component; if null, table remains unfilled, once table is populated, it fills -->
-	<table class="table" *ngIf="purchaserequestandlines">
+	<table class="table">
 		<tr>
 			<th>Description</th>
 			<th>Status</th>
@@ -20,17 +20,14 @@
 			<th>Product</th>
 			<th>Quantity</th>
 			<th>Subtotal</th>
-			<!-- <th>Actions</th> -->
+			<th>Actions</th>
 		</tr>
 		<tr *ngFor="let purchaserequestlineitem of purchaserequestandlines.PurchaseRequestLineItems">
 			<td>{{purchaserequestlineitem.Product.Name}}</td>
 			<td>{{purchaserequestlineitem.Quantity}}</td>
 			<td>{{purchaserequestlineitem.Quantity * purchaserequestlineitem.Product.Price | currency:'USD':true}} </td>
-			<!-- <td><a (click)="remove()">Delete</a></td> -->
-			<!-- <td>
-				<a routerLink="/purchaserequestlineitems/detail/{{purchaserequest.PurchaseRequestID}}">Accept</a>
-				<a routerLink="/purchaserequestlineitems/edit/{{purchaserequest.PurchaseRequestID}}">Edit</a>
-			</td> -->
+				<!-- passes ID into remove() function inside component -->
+			<td><a (click)="remove(purchaserequestlineitem.PurchaseRequestLineItemID)">Delete</a></td>
 		</tr>
 	</table>
 	<div class="text-center">

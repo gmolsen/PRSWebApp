@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import 'rxjs/add/operator/toPromise';
+
 import { SystemService } from '../../services/system.service';
 import { PurchaseRequestService } from '../../services/purchase-request.service';
 import { PurchaseRequest } from '../../models/PurchaseRequest';
