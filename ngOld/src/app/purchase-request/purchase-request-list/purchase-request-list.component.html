@@ -26,7 +26,7 @@
 			<td>{{purchaserequest.SubmittedDate | date:'M/d/y'}} </td>
 			<td>{{purchaserequest.DeliveryMode}} </td>
 			<td>{{purchaserequest.Status}} </td>
-			<td>{{purchaserequest.Total}} </td>
+			<td>{{purchaserequest.Total | currency:'USD':true}} </td>
 			<td>{{purchaserequest.User.UserName}} </td>
 			<td>
 				<a routerLink="/purchaserequests/detail/{{purchaserequest.PurchaseRequestID}}">Detail</a>

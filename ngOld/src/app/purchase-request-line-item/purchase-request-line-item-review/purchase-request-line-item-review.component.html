@@ -1,9 +1,9 @@
 <menu-comp></menu-comp>
+<!-- *ngIf looks at variable "products" in component; if null, table remains unfilled, once table is populated, it fills -->
 <div *ngIf="purchaserequestandlines">
 
 	<div><span class="jumbotron"><h2>Purchase Request with Lines</h2></span>
-		<span class="CreateNew"><a routerLink="/purchaserequestlineitems/add/{{purchaserequestandlines.PurchaseRequest.PurchaseRequestID}}">Add New</a></span></div>
-		<!-- *ngIf looks at variable "products" in component; if null, table remains unfilled, once table is populated, it fills -->
+		
 	<table class="table">
 		<tr>
 			<th>Description</th>
@@ -20,14 +20,15 @@
 			<th>Product</th>
 			<th>Quantity</th>
 			<th>Subtotal</th>
-			<th>Actions</th>
 		</tr>
 		<tr *ngFor="let purchaserequestlineitem of purchaserequestandlines.PurchaseRequestLineItems">
 			<td>{{purchaserequestlineitem.Product.Name}}</td>
 			<td>{{purchaserequestlineitem.Quantity}}</td>
 			<td>{{purchaserequestlineitem.Quantity * purchaserequestlineitem.Product.Price | currency:'USD':true}} </td>
-				<!-- passes ID into remove() function inside component -->
-			<td><a (click)="remove(purchaserequestlineitem.PurchaseRequestLineItemID)">Delete</a></td>
 		</tr>
 	</table>
+	<div class="text-center">
+			<button class="btn btn-success" (click)="accept()">Accept</button>
+			<button class="btn btn-danger" (click)="reject()">Reject</button>
+	</div>
 </div>

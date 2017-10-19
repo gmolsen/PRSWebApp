@@ -47,7 +47,8 @@ export class PurchaseRequestLineItemAddComponent implements OnInit {
 		this.PurchaseRequestLineItemSvc.add(this.purchaserequestlineitem).then(
 			resp => { 
 				console.log(resp); 
-				this.router.navigateByUrl("/purchaserequestlineitems/GetByPurchaseRequestID/"+this.purchaserequest.PurchaseRequestID); 
+				this.router.navigateByUrl("/purchaserequestlineitems/GetByPurchaseRequestID/"
+					+this.purchaserequest.PurchaseRequestID); 
 			}
 		);
 	}

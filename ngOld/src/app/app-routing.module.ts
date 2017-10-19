@@ -31,6 +31,7 @@ import { PurchaseRequestReviewComponent } from './purchase-request/purchase-requ
 
 import { PurchaseRequestLineItemListComponent } from './purchase-request-line-item/purchase-request-line-item-list/purchase-request-line-item-list.component';
 import { PurchaseRequestLineItemAddComponent } from './purchase-request-line-item/purchase-request-line-item-add/purchase-request-line-item-add.component';
+import { PurchaseRequestLineItemReviewComponent } from './purchase-request-line-item/purchase-request-line-item-review/purchase-request-line-item-review.component';
 
 const routes: Routes = [ //routes define where to go based on the URL; const means variable will be set and never changed
 		
@@ -60,6 +61,7 @@ const routes: Routes = [ //routes define where to go based on the URL; const mea
 
 	{ path: "purchaserequestlineitems/GetByPurchaseRequestID/:id", component: PurchaseRequestLineItemListComponent },
 	{ path: "purchaserequestlineitems/add/:id", component: PurchaseRequestLineItemAddComponent },
+	{ path: "purchaserequestlineitems/review/:id", component: PurchaseRequestLineItemReviewComponent },
 
 	{ path: "about", component: AboutComponent },
 	{ path: "contact", component: ContactComponent },

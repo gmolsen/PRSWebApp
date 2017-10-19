@@ -16,11 +16,11 @@ import { Product } from '../../models/Product';
 import { ProductService } from '../../services/product.service';
 
 @Component({
-  selector: 'purchase-request-line-item-list',
-  templateUrl: './purchase-request-line-item-list.component.html',
-  styleUrls: ['./purchase-request-line-item-list.component.css']
+  selector: 'app-purchase-request-line-item-review',
+  templateUrl: './purchase-request-line-item-review.component.html',
+  styleUrls: ['./purchase-request-line-item-review.component.css']
 })
-export class PurchaseRequestLineItemListComponent implements OnInit {
+export class PurchaseRequestLineItemReviewComponent implements OnInit {
 
   purchaserequestandlines: PurchaseRequestAndLines;
 
@@ -31,34 +31,13 @@ export class PurchaseRequestLineItemListComponent implements OnInit {
 
   purchaserequest: PurchaseRequest;
 
-  // getPurchaseRequestLineItems(): void {
-  //   console.log("About to get purchase requests");
-  //   this.PurchaseRequestLineItemSvc.list()
-  //     .then(resp => {
-  //       console.log("List of purchase requests: ", resp);
-  //       this.purchaserequestlineitems = resp
-  //     });
-  // }
-
-    //PurchaseRequestLineItemID is passed in from HTML as a parameter of the remove() function
-  remove(id) {
-    this.purchaserequestlineitem.PurchaseRequestLineItemID = id;
-    this.PurchaseRequestLineItemSvc.remove(this.purchaserequestlineitem)
-      .then(resp => { 
-        console.log(resp); 
-        this.router.navigate(["/purchaserequestlineitems/GetByPurchaseRequestID/"
-          +this.purchaserequestandlines.PurchaseRequest.PurchaseRequestID]); 
-        location.reload();
-      });
-  }
-
-  accept() {
+   accept() {
     this.purchaserequestandlines.PurchaseRequest.Status = "ACCEPTED"
     console.log(this.purchaserequestandlines.PurchaseRequest)
     this.PurchaseRequestSvc.change(this.purchaserequestandlines.PurchaseRequest)
       .then(resp => { 
         console.log(resp); 
-        this.router.navigate(["/purchaserequests"]); 
+        this.router.navigate(["/purchaserequests/review/"]); 
       });
   }
 
@@ -69,24 +48,23 @@ export class PurchaseRequestLineItemListComponent implements OnInit {
     this.PurchaseRequestSvc.change(this.purchaserequestandlines.PurchaseRequest)
       .then(resp => { 
         console.log(resp); 
-        this.router.navigate(["/purchaserequests"]); 
+        this.router.navigate(["/purchaserequests/review/"]); 
       });
   }
 
   constructor(private PurchaseRequestSvc: PurchaseRequestService,
-    private PurchaseRequestLineItemSvc: PurchaseRequestLineItemService,
-     private router: Router,
-    private route: ActivatedRoute) { }
+  	private PurchaseRequestLineItemSvc: PurchaseRequestLineItemService,
+  	private router: Router,
+  	private route: ActivatedRoute) { }
 
-  ngOnInit() { console.log("ngOnInIt");
+  ngOnInit() {
 
-  this.route.paramMap
+  	this.route.paramMap
        .switchMap((params: ParamMap) =>
            //params gets id out of URL and passes it into getByPurchaseRequestID function
          this.PurchaseRequestLineItemSvc.getByPurchaseRequestId(params.get('id')))
        //Subscribe reads the data currently held by PurchaseRequest, and stores it in the purchaserequest variable above
            .subscribe((purchaserequestandlines: PurchaseRequestAndLines) => this.purchaserequestandlines = purchaserequestandlines);
-
-    // this.getPurchaseRequestLineItems();
   }
+
 }

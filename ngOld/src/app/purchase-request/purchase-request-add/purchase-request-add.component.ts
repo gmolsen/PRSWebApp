@@ -23,6 +23,7 @@ export class PurchaseRequestAddComponent implements OnInit {
 	loggedInUser: User;
 
 	add() {
+    this.purchaserequest.UserID = this.loggedInUser.UserID; 
 		this.PurchaseRequestSvc.add(this.purchaserequest).then(
 			resp => { 
 				console.log(resp); 
@@ -42,7 +43,7 @@ export class PurchaseRequestAddComponent implements OnInit {
 
   ngOnInit() {
   	if(!this.SystemSvc.isLoggedIn()) {
-  		this.router.navigateByUrl("\login");
+  		this.router.navigateByUrl("/login");
   	} else {
   		this.loggedInUser = this.SystemSvc.getLoggedIn();
           //taking primary key from loggedInUser and stuffing it in foreign key of purchaserequest so that the ID

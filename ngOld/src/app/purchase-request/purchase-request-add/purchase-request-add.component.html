@@ -1,4 +1,5 @@
 <menu-comp></menu-comp>
+
 <div class="form-horizontal" style="margin: 20px;">
 
 	<div><span class="PageTitle">Purchase Request Add</span></div>
@@ -44,7 +45,7 @@
 		<div class='col-md-9'>
 			<!-- <date-picker ngModel name='DateNeeded'></date-picker> -->
 			<input class='form-control' name='DateNeeded' type='text' id='purchaserequest-DateNeeded' 
-				[(ngModel)]='purchaseRequest.DateNeeded' placeholder="Date Needed">
+				[(ngModel)]='purchaserequest.DateNeeded' placeholder="Date Needed">
 		</div>
 	</div>
 
@@ -56,29 +57,29 @@
 		</div>
 	</div> -->
 
-	<div class='form-group' >
+	<!-- <div class='form-group' >
 		<label class='col-md-3  control-label' for="purchaserequest-Status">Status</label>
 		<div class='col-md-9'>
 			<input class='form-control' name='Status' type='text' id='purchaserequest-Status' 
-				[(ngModel)]= 'purchaserequest.Status == New' placeholder="New" disabled>
+				[(ngModel)]= "purchaserequest.Status == 'New'" placeholder="New" disabled>
 		</div>
 	</div>
-
-	<div class='form-group' >
+ -->
+	<!-- <div class='form-group' >
 		<label class='col-md-3  control-label' for="purchaserequest-Total">Total</label>
 		<div class='col-md-9'>
 			<input class='form-control' name='Total' type='text' id='purchaserequest-Total' 
 				[(ngModel)]='purchaserequest.Total' placeholder="Total" disabled>
 		</div>
-	</div>
+	</div> -->
 
-		<div class='form-group' >
-		<label class='col-md-3  control-label' for="purchaseRequest-User">User</label>
+		<!-- <div class='form-group' >
+		<label class='col-md-3  control-label' for="purchaserequest-User">User</label>
 		<div class='col-md-9'>
-			<input class='form-control' name='User' type='text' id='purchaseRequest-User' 
-				value='{{loggedInUser.UserName}}' placeholder="User" disabled>
+			<input class='form-control' name='User' type='text' id='purchaserequest-User' 
+				value='{{loggedInUser.UserName}}'>
 		</div>
-	</div>
+	</div> -->
 
 	<div class='form-group'>
 		<button (click)='add()' id='add' class='col-md-11 col-md-offset-1 btn btn-primary'>Add</button>

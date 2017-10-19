@@ -1,11 +1,11 @@
 <menu-comp></menu-comp>
-<div>
+<div *ngIf="purchaserequest">
 
 	<div><span class="jumbotron"><h2>Purchase Request Detail</h2></span>
 		<span class="CreateNew"><a routerLink="/purchaserequests/add">Add New</a></span>
 	</div>
 
-	<table class="table" *ngIf="purchaserequest">
+	<table class="table">
 		<tr><th>Description</th><td>{{purchaserequest.Description}}</td></tr>
 		<tr><th>Justification</th><td>{{purchaserequest.Justification}}</td></tr>
 		<tr><th>Rejection Reason</th><td>{{purchaserequest.RejectionReason}}</td></tr>
@@ -13,7 +13,7 @@
 		<tr><th>Date Submitted</th><td>{{purchaserequest.DateSubmitted}}</td></tr>
 		<tr><th>Delivery Mode</th><td>{{purchaserequest.DeliveryMode}}</td></tr>
 		<tr><th>Status</th><td>{{purchaserequest.Status}}</td></tr>
-		<tr><th>Total</th><td>{{purchaserequest.Total}}</td></tr>
+		<tr><th>Total</th><td>{{purchaserequest.Total | currency:'USD':true}}</td></tr>
 		<tr><th>User</th><td>{{purchaserequest.User.UserName}}</td></tr>
 	</table>
 		
