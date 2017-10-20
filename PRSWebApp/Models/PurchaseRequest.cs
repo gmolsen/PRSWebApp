@@ -28,14 +28,14 @@ namespace PRSWebApp.Models {
 	[StringLength(20)]
 	public string DeliveryMode { get; set; }
 
-	[Required]
-	[StringLength(15)]
-	public string Status { get; set; }
+		[Required]
+		[StringLength(15)]
+		public string Status { get; set; } = "New";
 
-	public double Total { get; set; }
+		public double Total { get; set; } = 0;
 
-	[Required]
-	public DateTime SubmittedDate = DateTime.Now;
+		[Required]
+		public DateTime SubmittedDate;
 
 	[Required]
 	public int UserID { get; set; }

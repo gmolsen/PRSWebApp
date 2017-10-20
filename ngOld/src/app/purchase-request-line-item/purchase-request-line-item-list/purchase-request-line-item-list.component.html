@@ -27,7 +27,8 @@
 			<td>{{purchaserequestlineitem.Quantity}}</td>
 			<td>{{purchaserequestlineitem.Quantity * purchaserequestlineitem.Product.Price | currency:'USD':true}} </td>
 				<!-- passes ID into remove() function inside component -->
-			<td><a (click)="remove(purchaserequestlineitem.PurchaseRequestLineItemID)">Delete</a></td>
+			<td><a (click)="remove(purchaserequestlineitem.PurchaseRequestLineItemID)">Delete</a>
+				<a routerLink="/purchaserequestlineitems/edit/{{purchaserequestlineitem.PurchaseRequestLineItemID}}">Edit</a></td>
 		</tr>
 	</table>
 </div>

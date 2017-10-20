@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginComponent } from '../login/login.component';
 
 //imports menu.ts file
 import { Menu } from './menu';
@@ -22,9 +23,9 @@ menus: Menu[] = [
   new Menu("PRODUCTS ", "/products", "Product list"),
   new Menu("PURCHASEREQUESTS ", "/purchaserequests", "Purchase Request list"),
   new Menu("REVIEW ", "/purchaserequests/review", "Review list"),
-	new Menu("ABOUT", "/about", "About menu item"),
-	new Menu("CONTACT", "/contact", "Contact menu item"),
-	new Menu("HELP", "/help", "Help menu item")	
+	// new Menu("ABOUT", "/about", "About menu item"),
+	// new Menu("CONTACT", "/contact", "Contact menu item"),
+	// new Menu("HELP", "/help", "Help menu item")	
 ];
 
   constructor() { }

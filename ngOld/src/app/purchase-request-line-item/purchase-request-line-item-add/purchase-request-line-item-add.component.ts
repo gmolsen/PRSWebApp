@@ -49,9 +49,8 @@ export class PurchaseRequestLineItemAddComponent implements OnInit {
 				console.log(resp); 
 				this.router.navigateByUrl("/purchaserequestlineitems/GetByPurchaseRequestID/"
 					+this.purchaserequest.PurchaseRequestID); 
-			}
-		);
-	}
+				});
+	};
 	
 
   constructor(private PurchaseRequestSvc: PurchaseRequestService,

@@ -32,7 +32,11 @@ export class PurchaseRequestDetailComponent implements OnInit {
 
 	review() {
 		console.log("review()");
+		if (this.purchaserequest.Total < 50) {
+			this.purchaserequest.Status = "ACCEPTED"
+		} else {
 		this.purchaserequest.Status = "Review"
+		}
 		this.PurchaseRequestSvc.change(this.purchaserequest)
 			.then(resp => { 
 				console.log(resp); 

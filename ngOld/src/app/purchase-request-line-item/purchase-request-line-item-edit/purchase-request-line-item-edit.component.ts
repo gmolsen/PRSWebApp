@@ -2,7 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/switchMap';
+
+import { SystemService } from '../../services/system.service';
+
+import { PurchaseRequestAndLines } from '../../models/PurchaseRequestAndLines';
+
 import { PurchaseRequestLineItem } from '../../models/PurchaseRequestLineItem';
+import { PurchaseRequestLineItemService } from '../../services/purchase-request-line-item.service';
 
 
 import {PurchaseRequest} from '../../models/PurchaseRequest';
@@ -11,7 +19,8 @@ import {PurchaseRequestService} from '../../services/purchase-request.service';
 import { Product } from '../../models/Product';
 import { ProductService } from '../../services/product.service';
 
-import 'rxjs/add/operator/switchMap';
+import { User } from '../../models/User';
+
 
 @Component({
   selector: 'app-purchase-request-line-item-edit',
@@ -20,17 +29,26 @@ import 'rxjs/add/operator/switchMap';
 })
 export class PurchaseRequestLineItemEditComponent implements OnInit {
 
-	purchaserequest:PurchaseRequest;
+	purchaserequestlineitem: PurchaseRequestLineItem;
+  purchaserequest: PurchaseRequest;
 	products: Product[];
 
 	update(){
-		this.PurchaseRequestSvc.change(this.purchaserequest).then(
+    // this.purchaserequest.PurchaseRequestID = this.purchaserequestlineitem.PurchaseRequestID
+		this.PurchaseRequestLineItemSvc.change(this.purchaserequestlineitem).then(
 			resp => {console.log(resp);
-				this.router.navigate(['/purchaserequests'])}
-		)
-	}
+				this.router.navigateByUrl("/purchaserequestlineitems/GetByPurchaseRequestID/"
+          +this.purchaserequestlineitem.PurchaseRequestID);
+        // this.router.navigateByUrl("/purchaserequestlineitems/GetByPurchaseRequestID/"
+        //   +this.purchaserequestlineitem.PurchaseRequestID);
+		});
+  };
 
-  constructor(private PurchaseRequestSvc: PurchaseRequestService, private ProductSvc: ProductService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private PurchaseRequestLineItemSvc: PurchaseRequestLineItemService,
+  private ProductSvc: ProductService,
+  private PurchaseRequestSvc: PurchaseRequestService,
+  private route: ActivatedRoute, 
+  private router: Router) { }
 
   getProducts(): void {
 		this.ProductSvc.list().then(
@@ -41,9 +59,9 @@ export class PurchaseRequestLineItemEditComponent implements OnInit {
   	this.route.paramMap
   	 	.switchMap((params: ParamMap) =>
   	 		//params gets id out of URL and passes it into get function
-  	 		this.PurchaseRequestSvc.get(params.get('id')))
-  	 	//Subscribe reads the data currently held by PurchaseRequest, and stores it in the purchaserequest variable above
-           .subscribe((purchaserequest: PurchaseRequest) => this.purchaserequest = purchaserequest);
+  	 		this.PurchaseRequestLineItemSvc.get(params.get('id')))
+  	 	//Subscribe reads the data currently held by PurchaseRequestLineItem, and stores it in the purchaserequestlineitem variable above
+           .subscribe((purchaserequestlineitem: PurchaseRequestLineItem) => this.purchaserequestlineitem = purchaserequestlineitem);
  	
  	this.getProducts();
 	}

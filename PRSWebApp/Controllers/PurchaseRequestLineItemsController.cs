@@ -44,34 +44,26 @@ namespace PRSWebApp.Controllers
 			db.SaveChanges();
 	}
 
-		//performs Json call to return list of PurchaseRequestLineItems for a specific Purchase Request
-		//this will always return an array
-		//it may have 0, 1, or more items within the array
-		public ActionResult List(int? PurchaseRequestID) {
-			//return Json(db.PurchaseRequestLineItems.ToList(), JsonRequestBehavior.AllowGet);
-			return new JsonNetResult { Data = db.PurchaseRequestLineItems.Where(p => p.PurchaseRequestID
-			== PurchaseRequestID).ToList() };
-		}
-
 		// PurchaseRequestLineItems/id
 		// will return a PurchaseRequestLineItem or an error message
-		public ActionResult Get(int? PurchaseRequestID) {
+		public ActionResult Get(int? id) {
 			//if nothing is passed in for ID
-			if (PurchaseRequestID == null) {
+			if (id == null) {
 				return Json(new Msg { Result = "Failure", Message = "ID is null" }, JsonRequestBehavior.AllowGet);
 			}
 
+			PurchaseRequestLineItem purchaseRequestLineItem = db.PurchaseRequestLineItems.Find(id);
 			//returns a PurchaseRequestLineItem or an error message
-			PurchaseRequestLineItem PurchaseRequestLineItem = db.PurchaseRequestLineItems.Find(PurchaseRequestID);
+			//PurchaseRequestLineItem PurchaseRequestLineItem = db.PurchaseRequestLineItems.Find(id);
 			//if id is not found when find is issued, you get this message as an array
-			if (PurchaseRequestLineItem == null) {
+			if (purchaseRequestLineItem == null) {
 				return Json(new Msg { Result = "Failure", Message = "ID not found" }, JsonRequestBehavior.AllowGet);
 			}
 			//no errors, we have a PurchaseRequestLineItem
 			//return Json(PurchaseRequestLineItem, JsonRequestBehavior.AllowGet);
 
 			//changes format of date data shipped down to JS
-			return new JsonNetResult { Data = db.PurchaseRequestLineItems.ToList() };
+			return new JsonNetResult { Data = purchaseRequestLineItem };
 		}
 
 
@@ -101,7 +93,7 @@ namespace PRSWebApp.Controllers
 			if (purchaseRequest == null) {
 				return Json(new Msg { Result = "Failure", Message = "Purchase Request ID FK is invalid" });
 			}
-			//even more validation (doesn't it feel great to be validated?) 
+			//even more validation (doesn't it feel great to be val	idated?) 
 			var oldPurchaseRequestLineItem = db.PurchaseRequestLineItems.Find(PurchaseRequestLineItem.PurchaseRequestLineItemID);
 			if (oldPurchaseRequestLineItem == null) {
 				return Json(new Msg { Result = "Failure", Message = "Purchase Request Line Item ID not found" });

@@ -16,7 +16,7 @@ import { UserService } from '../../services/user.service';
 })
 export class PurchaseRequestAddComponent implements OnInit {
 
-	purchaserequest: PurchaseRequest = new PurchaseRequest(0, '', '', '', new Date(), new Date(), '', 'New', 0, 0);
+	purchaserequest: PurchaseRequest = new PurchaseRequest(0, '', '', '', new Date, new Date(Date.now() + 604800000), '', 'New', 0, 0);
 
 	users: User[];
 	
